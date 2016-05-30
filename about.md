@@ -10,4 +10,9 @@ I joined IIIT-H in December 2014. I work as a Research Assistant in ILMT project
 
 ### Contact me
 
+A3-107, Vindhya-A3
+LTRC, IIIT-H, Gachibowli, Hyderabad, 500032, India
+
++91 78939 40615
+
 [irshad.bhat@research.iiit.ac.in](mailto:irshad.bhat@research.iiit.ac.in)
