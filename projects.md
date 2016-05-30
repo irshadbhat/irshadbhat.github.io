@@ -4,15 +4,14 @@ title: Projects
 parmalink: /projects/
 ---
 
-Hi! I am an ``MS-CSE`` student at the `Language Technology Research Centre`, `International Institute of Information Technology`, Hyderabad, India. I work in the area of natural language processing (NLP). I am particularly interested in machine learning for processing and understanding of natural language text. 
+Language Identification
 
-I joined `IIIT-H` in December 2014. I work as a Research Assistant in `ILMT` project. I am advised by `Dr. Manish Shrivastav`.
+Machine Transliteration
 
-### Contact Details
+Wx converter
 
-`A3-107, Vindhya-A3`
-`LTRC, IIIT-H, Gachibowli, Hyderabad, 500032, India`
+Indic Tokenizer
 
-`+91 78939 40615`
+Indic Normalizer
 
 [irshad.bhat@research.iiit.ac.in](mailto:irshad.bhat@research.iiit.ac.in)
