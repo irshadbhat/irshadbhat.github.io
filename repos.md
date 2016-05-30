@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Who am I?
-permalink: /about/
+title: Projects
+parmalink: /projects/
 ---
 
 Hi! I am an ``MS-CSE`` student at the `Language Technology Research Centre`, `International Institute of Information Technology`, Hyderabad, India. I work in the area of natural language processing (NLP). I am particularly interested in machine learning for processing and understanding of natural language text. 
