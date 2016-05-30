@@ -8,7 +8,7 @@ Hi! I am an ``MS-CSE`` student at the `Language Technology Research Centre`, `In
 
 I joined `IIIT-H` in December 2014. I work as a Research Assistant in `ILMT` project. I am advised by `Dr. Manish Shrivastav`.
 
-### Contact Details
+# Contact Details
 
 **Mailing Address**: `A3-107, Vindhya-A3`
 
