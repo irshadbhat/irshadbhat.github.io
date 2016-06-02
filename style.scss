@@ -21,11 +21,12 @@ body {
 	background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
+  text-width:100px;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 120px;
+  max-width: 740px;
   padding: 0 10px;
   width: 100%;
 }
