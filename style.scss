@@ -312,7 +312,6 @@ footer {
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
-
 div.table-title {
    display: block;
   margin: auto;
@@ -341,7 +340,7 @@ div.table-title {
   height: 320px;
   margin: auto;
   max-width: 600px;
-  padding:5px;
+  padding:1px;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
@@ -355,7 +354,7 @@ th {
   font-size:23px;
   font-weight: 100;
   padding:24px;
-  text-align:left;
+  text-align:center;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
 }
