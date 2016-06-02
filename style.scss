@@ -378,6 +378,7 @@ tr {
 tr:hover td {
   background:#4E5066;
   color:#FFFFFF;
+  padding:4px;
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
 }
@@ -408,7 +409,6 @@ tr:last-child td:last-child {
  
 td {
   background:#FFFFFF;
-  padding:5px;
   text-align:left;
   vertical-align:middle;
   font-weight:300;
