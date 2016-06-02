@@ -348,6 +348,7 @@ th {
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
+  padding:2px;
   font-size:20px;
   font-weight: 100;
   text-align:center;
@@ -367,6 +368,7 @@ th:last-child {
 tr {
   border-top: 1px solid #C1C3D1;
   border-bottom-: 1px solid #C1C3D1;
+  padding:2px;
   color:#666B85;
   font-size:16px;
   font-weight:normal;
@@ -375,6 +377,7 @@ tr {
  
 tr:hover td {
   background:#4E5066;
+  padding:2px;
   color:#FFFFFF;
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
