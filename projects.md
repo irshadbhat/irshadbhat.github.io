@@ -4,12 +4,12 @@ title: Projects
 parmalink: /projects/
 ---
 
-Language Identification
+## Language Identification
 
-Machine Transliteration
+## Machine Transliteration
 
-Wx converter
+## Wx converter
 
-Indic Tokenizer
+## Indic Tokenizer
 
-Indic Normalizer
+## Indic Normalizer
