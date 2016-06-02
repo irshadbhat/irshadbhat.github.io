@@ -4,14 +4,12 @@ title: Projects
 parmalink: /projects/
 ---
 
-Language Identification
+## Language Identification
 
-Machine Transliteration
+## Machine Transliteration
 
-Wx converter
+## Wx converter
 
-Indic Tokenizer
+## Indic Tokenizer
 
-Indic Normalizer
-
-[irshad.bhat@research.iiit.ac.in](mailto:irshad.bhat@research.iiit.ac.in)
+## Indic Normalizer
