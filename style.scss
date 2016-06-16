@@ -313,6 +313,7 @@ footer {
   background: white;
   border-radius:3px;
   border-collapse: collapse;
+  font-family: helvetica;
   margin: auto;
   max-width: 600px;
   text-align:center;
@@ -326,6 +327,7 @@ th {
   background:#1b1e24;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
+  font-family: helvetica;
   font-size:17px;
   font-weight: 100;
   padding:5px;
@@ -349,6 +351,7 @@ tr {
   color:#666B85;
   font-size:15px;
   font-weight:normal;
+  font-family: helvetica;
   //text-align:center;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
 }
