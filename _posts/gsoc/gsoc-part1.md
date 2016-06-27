@@ -82,6 +82,7 @@ Arthur Samuel defined machine learning as a "Field of study that gives computers
 ## During Community Bonding
 During the community bonding period I explored some of the existing tools on Indic-transliteration. Created different test cases to evaluate these existing systems, to gauge the weaknesses and strengths of these systems.
 
+{% page_break %}
 
 ## Progress So Far
 
@@ -385,7 +386,6 @@ print(hin_)
 उनके जयललिता और सोनिया गांधी के पीछे पड़ने का कारण कथित भ्रष्टाचार है.
 ```
 
-[Part 1](gsoc/gsoc-part1.md)
 
 [comment]: <> I will list down the progress on the project in three major blocks of time.
 
