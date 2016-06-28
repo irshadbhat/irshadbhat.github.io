@@ -4,12 +4,11 @@ title: Projects
 parmalink: /projects/
 ---
 
-## Language Identification
+### [Language Identification](https://github.com/irshadbhat/litcm)
 
-## Machine Transliteration
+### [Machine Transliteration](https://github.com/irshadbhat/indic-trans)
 
-## Wx converter
+### [Wx converter](https://github.com/irshadbhat/indic-wx-converter)
 
-## Indic Tokenizer
+### [Indic Tokenizer](https://github.com/irshadbhat/indic-tokenizer)
 
-## Indic Normalizer
