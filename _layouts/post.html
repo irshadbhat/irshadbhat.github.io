@@ -10,7 +10,7 @@ layout: default
   </div>
 
   <div class="date">
-    {{ page.last_modified_at | date: '%Y:%B:%A:%d:%S:%R' }}
+    {% last_modified_at %}
   </div>
 
   {% include disqus.html %}
