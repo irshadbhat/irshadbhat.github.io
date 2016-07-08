@@ -85,6 +85,3 @@ exclude:
   - README.md
   - CNAME
 permalink: /blog/:year/:month/:day/:title
-
-gems:
-  - jekyll-last-modified-at
