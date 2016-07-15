@@ -130,7 +130,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/module_trans.txt" rel="nofollow"> View page source</a>
+            <a href="sources/module_trans.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -146,7 +146,7 @@
 <h2><code class="xref py py-mod docutils literal"><span class="pre">indictrans.transliterator</span></code> — Transliterator<a class="headerlink" href="#indictrans-transliterator-transliterator" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="indictrans.Transliterator">
-<em class="property">class </em><code class="descclassname">indictrans.</code><code class="descname">Transliterator</code><span class="sig-paren">(</span><em>source='hin'</em>, <em>target='eng'</em>, <em>decode='viterbi'</em>, <em>build_lookup=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/transliterator.html#Transliterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.Transliterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">indictrans.</code><code class="descname">Transliterator</code><span class="sig-paren">(</span><em>source='hin'</em>, <em>target='eng'</em>, <em>decode='viterbi'</em>, <em>build_lookup=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/transliterator.html#Transliterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.Transliterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transliterator for Indic scripts including English and Urdu.</p>
 <dl class="docutils">
 <dt>source</dt>
@@ -184,7 +184,7 @@ process if the input text contains repeating words.</dd>
 <h2><a class="reference internal" href="#indictrans.base.BaseTransliterator" title="indictrans.base.BaseTransliterator"><code class="xref py py-mod docutils literal"><span class="pre">indictrans.base.BaseTransliterator</span></code></a> — BaseTransliterator<a class="headerlink" href="#indictrans-base-basetransliterator-basetransliterator" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="indictrans.base.BaseTransliterator">
-<em class="property">class </em><code class="descclassname">indictrans.base.</code><code class="descname">BaseTransliterator</code><span class="sig-paren">(</span><em>source</em>, <em>target</em>, <em>decoder</em>, <em>build_lookup=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/base.html#BaseTransliterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">indictrans.base.</code><code class="descname">BaseTransliterator</code><span class="sig-paren">(</span><em>source</em>, <em>target</em>, <em>decoder</em>, <em>build_lookup=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for transliterator.</p>
 <dl class="docutils">
 <dt><a href="#id1"><span class="problematic" id="id2">vectorizer_</span></a></dt>
@@ -207,26 +207,26 @@ one-hot features.</dd>
 </dl>
 <dl class="method">
 <dt id="indictrans.base.BaseTransliterator.convert_to_wx">
-<code class="descname">convert_to_wx</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/base.html#BaseTransliterator.convert_to_wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.convert_to_wx" title="Permalink to this definition">¶</a></dt>
+<code class="descname">convert_to_wx</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.convert_to_wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.convert_to_wx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts Indic scripts to WX.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans.base.BaseTransliterator.load_models">
-<code class="descname">load_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/base.html#BaseTransliterator.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.load_models" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.load_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads transliteration models.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans.base.BaseTransliterator.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>word</em>, <em>k_best=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/base.html#BaseTransliterator.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>word</em>, <em>k_best=5</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given encoded word matrix and HMM parameters, predicts output
 sequence (target word)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans.base.BaseTransliterator.top_n_trans">
-<code class="descname">top_n_trans</code><span class="sig-paren">(</span><em>text</em>, <em>k_best=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/base.html#BaseTransliterator.top_n_trans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.top_n_trans" title="Permalink to this definition">¶</a></dt>
+<code class="descname">top_n_trans</code><span class="sig-paren">(</span><em>text</em>, <em>k_best=5</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.top_n_trans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.top_n_trans" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns k-best transliterations using beamsearch decoding.</p>
 <dl class="docutils">
 <dt>k_best</dt>
@@ -236,7 +236,7 @@ sequence (target word)</p>
 
 <dl class="method">
 <dt id="indictrans.base.BaseTransliterator.transliterate">
-<code class="descname">transliterate</code><span class="sig-paren">(</span><em>text</em>, <em>k_best=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/base.html#BaseTransliterator.transliterate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.transliterate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transliterate</code><span class="sig-paren">(</span><em>text</em>, <em>k_best=None</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.transliterate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.transliterate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Single best transliteration using viterbi decoding.</p>
 </dd></dl>
 
@@ -247,7 +247,7 @@ sequence (target word)</p>
 <h2><a class="reference internal" href="#indictrans._utils.WX" title="indictrans._utils.WX"><code class="xref py py-mod docutils literal"><span class="pre">indictrans._utils.WX</span></code></a> — WXConverter<a class="headerlink" href="#indictrans-utils-wx-wxconverter" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="indictrans._utils.WX">
-<em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">WX</code><span class="sig-paren">(</span><em>order=u'utf2wx'</em>, <em>lang=u'hin'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">WX</code><span class="sig-paren">(</span><em>order=u'utf2wx'</em>, <em>lang=u'hin'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX" title="Permalink to this definition">¶</a></dt>
 <dd><p>WX-converter for UTF to WX conversion of Indic scripts and vice-versa.</p>
 <dl class="docutils">
 <dt>lang</dt>
@@ -287,19 +287,19 @@ sequence (target word)</p>
 </div>
 <dl class="method">
 <dt id="indictrans._utils.WX.iscii2unicode">
-<code class="descname">iscii2unicode</code><span class="sig-paren">(</span><em>iscii</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.iscii2unicode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.iscii2unicode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">iscii2unicode</code><span class="sig-paren">(</span><em>iscii</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.iscii2unicode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.iscii2unicode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert ISCII to Unicode</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans._utils.WX.iscii2wx">
-<code class="descname">iscii2wx</code><span class="sig-paren">(</span><em>my_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.iscii2wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.iscii2wx" title="Permalink to this definition">¶</a></dt>
+<code class="descname">iscii2wx</code><span class="sig-paren">(</span><em>my_string</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.iscii2wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.iscii2wx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert ISCII to WX</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans._utils.WX.normalize">
-<code class="descname">normalize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.normalize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.normalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs some common normalization, which includes:
 - Byte order mark, word joiner, etc. removal
 - ZERO_WIDTH_NON_JOINER and ZERO_WIDTH_JOINER removal</p>
@@ -307,25 +307,25 @@ sequence (target word)</p>
 
 <dl class="method">
 <dt id="indictrans._utils.WX.unicode2iscii">
-<code class="descname">unicode2iscii</code><span class="sig-paren">(</span><em>unicode_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.unicode2iscii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.unicode2iscii" title="Permalink to this definition">¶</a></dt>
+<code class="descname">unicode2iscii</code><span class="sig-paren">(</span><em>unicode_</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.unicode2iscii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.unicode2iscii" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert Unicode to ISCII</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans._utils.WX.utf2wx">
-<code class="descname">utf2wx</code><span class="sig-paren">(</span><em>unicode_</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.utf2wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.utf2wx" title="Permalink to this definition">¶</a></dt>
+<code class="descname">utf2wx</code><span class="sig-paren">(</span><em>unicode_</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.utf2wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.utf2wx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert UTF string to WX-Roman</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans._utils.WX.wx2iscii">
-<code class="descname">wx2iscii</code><span class="sig-paren">(</span><em>my_string</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.wx2iscii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.wx2iscii" title="Permalink to this definition">¶</a></dt>
+<code class="descname">wx2iscii</code><span class="sig-paren">(</span><em>my_string</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.wx2iscii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.wx2iscii" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert WX to ISCII</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans._utils.WX.wx2utf">
-<code class="descname">wx2utf</code><span class="sig-paren">(</span><em>wx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/wx.html#WX.wx2utf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.wx2utf" title="Permalink to this definition">¶</a></dt>
+<code class="descname">wx2utf</code><span class="sig-paren">(</span><em>wx</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.wx2utf"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.wx2utf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert WX-Roman to UTF</p>
 </dd></dl>
 
@@ -336,7 +336,7 @@ sequence (target word)</p>
 <h2><a class="reference internal" href="#indictrans._utils.OneHotEncoder" title="indictrans._utils.OneHotEncoder"><code class="xref py py-mod docutils literal"><span class="pre">indictrans._utils.OneHotEncoder</span></code></a> — OneHotEncoder<a class="headerlink" href="#indictrans-utils-onehotencoder-onehotencoder" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="indictrans._utils.OneHotEncoder">
-<em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">OneHotEncoder</code><a class="reference internal" href="_modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">OneHotEncoder</code><a class="reference internal" href="modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transforms categorical features to continuous numeric features.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">one_hot_encoder</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
@@ -356,7 +356,7 @@ sequence (target word)</p>
 </div>
 <dl class="method">
 <dt id="indictrans._utils.OneHotEncoder.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit OneHotEncoder to X.</p>
 <dl class="docutils">
 <dt>X</dt>
@@ -367,7 +367,7 @@ sequence (target word)</p>
 
 <dl class="method">
 <dt id="indictrans._utils.OneHotEncoder.transform">
-<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>sparse=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder.transform" title="Permalink to this definition">¶</a></dt>
+<code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>sparse=True</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform X using one-hot encoding.</p>
 <dl class="docutils">
 <dt>X</dt>
@@ -388,7 +388,7 @@ sequence (target word)</p>
 <h2><a class="reference internal" href="#indictrans._utils.UrduNormalizer" title="indictrans._utils.UrduNormalizer"><code class="xref py py-mod docutils literal"><span class="pre">indictrans._utils.UrduNormalizer</span></code></a> — UrduNormalizer<a class="headerlink" href="#indictrans-utils-urdunormalizer-urdunormalizer" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="indictrans._utils.UrduNormalizer">
-<em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">UrduNormalizer</code><a class="reference internal" href="_modules/indictrans/_utils/script_normalizer.html#UrduNormalizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">UrduNormalizer</code><a class="reference internal" href="modules/indictrans/_utils/script_normalizer.html#UrduNormalizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalizer for Urdu scripts. Normalizes different unicode canonical
 equivalances to a single unicode code-point.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">script_normalizer</span> <span class="k">import</span> <span class="n">UrduNormalizer</span>
@@ -406,7 +406,7 @@ equivalances to a single unicode code-point.</p>
 </div>
 <dl class="method">
 <dt id="indictrans._utils.UrduNormalizer.cnorm">
-<code class="descname">cnorm</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/script_normalizer.html#UrduNormalizer.cnorm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer.cnorm" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cnorm</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/script_normalizer.html#UrduNormalizer.cnorm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer.cnorm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalize NO_BREAK_SPACE, SOFT_HYPHEN, WORD_JOINER, H_SPACE,
 ZERO_WIDTH[SPACE, NON_JOINER, JOINER],
 MARK[LEFT_TO_RIGHT, RIGHT_TO_LEFT, BYTE_ORDER, BYTE_ORDER_2]</p>
@@ -414,7 +414,7 @@ MARK[LEFT_TO_RIGHT, RIGHT_TO_LEFT, BYTE_ORDER, BYTE_ORDER_2]</p>
 
 <dl class="method">
 <dt id="indictrans._utils.UrduNormalizer.normalize">
-<code class="descname">normalize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/_utils/script_normalizer.html#UrduNormalizer.normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer.normalize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">normalize</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/script_normalizer.html#UrduNormalizer.normalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer.normalize" title="Permalink to this definition">¶</a></dt>
 <dd><p>normalize text</p>
 </dd></dl>
 
@@ -425,7 +425,7 @@ MARK[LEFT_TO_RIGHT, RIGHT_TO_LEFT, BYTE_ORDER, BYTE_ORDER_2]</p>
 <h2><a class="reference internal" href="#indictrans.trunk.StructuredPerceptron" title="indictrans.trunk.StructuredPerceptron"><code class="xref py py-mod docutils literal"><span class="pre">indictrans.trunk.StructuredPerceptron</span></code></a> — StructuredPerceptron<a class="headerlink" href="#indictrans-trunk-structuredperceptron-structuredperceptron" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="indictrans.trunk.StructuredPerceptron">
-<em class="property">class </em><code class="descclassname">indictrans.trunk.</code><code class="descname">StructuredPerceptron</code><span class="sig-paren">(</span><em>lr_exp=0.1</em>, <em>n_iter=15</em>, <em>random_state=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/trunk/perceptron.html#StructuredPerceptron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">indictrans.trunk.</code><code class="descname">StructuredPerceptron</code><span class="sig-paren">(</span><em>lr_exp=0.1</em>, <em>n_iter=15</em>, <em>random_state=None</em>, <em>verbose=0</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/trunk/perceptron.html#StructuredPerceptron"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Structured perceptron for sequence classification.</p>
 <p>The implemention is based on average structured perceptron algorithm of
 M. Collins.</p>
@@ -447,7 +447,7 @@ by <code class="docutils literal"><span class="pre">np.random</span></code>.</dd
 models: Theory and experiments with perceptron algorithms. EMNLP.</p>
 <dl class="method">
 <dt id="indictrans.trunk.StructuredPerceptron.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/trunk/perceptron.html#StructuredPerceptron.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/trunk/perceptron.html#StructuredPerceptron.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the model to the given set of sequences.</p>
 <dl class="docutils">
 <dt>X</dt>
@@ -466,7 +466,7 @@ models: Theory and experiments with perceptron algorithms. EMNLP.</p>
 
 <dl class="method">
 <dt id="indictrans.trunk.StructuredPerceptron.predict">
-<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/indictrans/trunk/perceptron.html#StructuredPerceptron.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron.predict" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/trunk/perceptron.html#StructuredPerceptron.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict output sequences for input sequences in X.</p>
 <dl class="docutils">
 <dt>X</dt>
