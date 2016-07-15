@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Transliteration &mdash; indictrans latest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="indictrans latest documentation" href="index.html"/>
+        <link rel="prev" title="Model Setup &amp; Training" href="guide_model.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> indictrans
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="module_trans.html">Module References</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guide_model.html">Model Setup &amp; Training</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transliteration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transliterate">Transliterate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#k-best-transliterations">K-Best Transliterations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transliterate-from-console">Transliterate from Console</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">indictrans</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Transliteration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/guide_transliteration.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="transliteration">
+<h1>Transliteration<a class="headerlink" href="#transliteration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="transliterate">
+<span id="example-trans"></span><h2>Transliterate<a class="headerlink" href="#transliterate" title="Permalink to this headline">¶</a></h2>
+<p>In order to transliterate raw text, you can use the <a class="reference internal" href="module_trans.html#indictrans.Transliterator" title="indictrans.Transliterator"><code class="xref py py-class docutils literal"><span class="pre">indictrans.Transliterator</span></code></a> which uses already trained models to transliterate the text. If the input text contains repeating words, which raw text generally does, make sure to set <code class="docutils literal"><span class="pre">build_lookup</span></code> flag to <code class="docutils literal"><span class="pre">True</span></code>. As the name indicates this builds lookup for transliterated words and thus avoids repeated transliteration of same words. This saves a lot of time if the input corpus is too big.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
+<span class="n">trn</span> <span class="o">=</span> <span class="n">Transliterator</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;hin&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">build_lookup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">hin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;कांग्रेस पार्टी अध्यक्ष सोनिया गांधी, तमिलनाडु की मुख्यमंत्री</span>
+<span class="s2">जयललिता और रिज़र्व बैंक के गवर्नर रघुराम राजन के बीच एक समानता</span>
+<span class="s2">है. ये सभी अलग-अलग कारणों से भारतीय जनता पार्टी के राज्यसभा सांसद</span>
+<span class="s2">सुब्रमण्यम स्वामी के निशाने पर हैं. उनके जयललिता और सोनिया गांधी के</span>
+<span class="s2">पीछे पड़ने का कारण कथित भ्रष्टाचार है.&quot;&quot;&quot;</span>
+<span class="n">eng</span> <span class="o">=</span> <span class="n">trn</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">hin</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span>
+<span class="n">congress</span> <span class="n">party</span> <span class="n">adhyaksh</span> <span class="n">sonia</span> <span class="n">gandhi</span><span class="p">,</span> <span class="n">tamilnadu</span> <span class="n">kii</span> <span class="n">mukhyamantri</span>
+<span class="n">jayalalita</span> <span class="n">our</span> <span class="n">reserve</span> <span class="n">baink</span> <span class="n">ke</span> <span class="n">governor</span> <span class="n">raghuram</span> <span class="n">rajan</span> <span class="n">ke</span> <span class="n">beech</span> <span class="n">ek</span> <span class="n">samanta</span>
+<span class="n">hai</span><span class="o">.</span> <span class="n">ye</span> <span class="n">sabi</span> <span class="n">alag</span><span class="o">-</span><span class="n">alag</span> <span class="n">carnon</span> <span class="n">se</span> <span class="n">bharatiya</span> <span class="n">janata</span> <span class="n">party</span> <span class="n">ke</span> <span class="n">rajyasabha</span> <span class="n">saansad</span>
+<span class="n">subramanyam</span> <span class="n">swami</span> <span class="n">ke</span> <span class="n">nishane</span> <span class="n">par</span> <span class="n">hain</span><span class="o">.</span> <span class="n">unke</span> <span class="n">jayalalita</span> <span class="n">our</span> <span class="n">sonia</span> <span class="n">gandhi</span> <span class="n">ke</span>
+<span class="n">peeche</span> <span class="n">padane</span> <span class="n">ka</span> <span class="n">kaaran</span> <span class="n">kathith</span> <span class="n">bhrashtachar</span> <span class="n">hai</span><span class="o">.</span>
+<span class="n">trn</span> <span class="o">=</span> <span class="n">Transliterator</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;hin&#39;</span><span class="p">)</span>
+<span class="n">hin_</span> <span class="o">=</span> <span class="n">trn</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">eng</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hin_</span><span class="p">)</span>
+<span class="n">कांग्रेस</span> <span class="n">पार्टी</span> <span class="n">अध्यक्ष</span> <span class="n">सोनिया</span> <span class="n">गांधी</span><span class="p">,</span> <span class="n">तमिलनाडु</span> <span class="n">की</span> <span class="n">मुख्यमांत्री</span>
+<span class="n">जयललिता</span> <span class="n">और</span> <span class="n">रिज़र्व</span> <span class="n">बैंक</span> <span class="n">के</span> <span class="n">गवर्नर</span> <span class="n">रघुराम</span> <span class="n">राजन</span> <span class="n">के</span> <span class="n">बीच</span> <span class="n">एक</span> <span class="n">समानता</span>
+<span class="n">है</span><span class="o">.</span> <span class="n">ये</span> <span class="n">सभी</span> <span class="n">अलग</span><span class="o">-</span><span class="n">अलग</span> <span class="n">कार्नों</span> <span class="n">से</span> <span class="n">भारतीय</span> <span class="n">जनता</span> <span class="n">पार्टी</span> <span class="n">के</span> <span class="n">राज्यसभा</span> <span class="n">संसद</span>
+<span class="n">सुब्रमण्यम</span> <span class="n">स्वामी</span> <span class="n">के</span> <span class="n">निशाने</span> <span class="n">पर</span> <span class="n">हैं</span><span class="o">.</span> <span class="n">उनके</span> <span class="n">जयललिता</span> <span class="n">और</span> <span class="n">सोनिया</span> <span class="n">गांधी</span> <span class="n">के</span>
+<span class="n">पीछे</span> <span class="n">पड़ने</span> <span class="n">का</span> <span class="n">कारण</span> <span class="n">कथित</span> <span class="n">भ्रष्टाचार</span> <span class="n">है</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="k-best-transliterations">
+<h2>K-Best Transliterations<a class="headerlink" href="#k-best-transliterations" title="Permalink to this headline">¶</a></h2>
+<p>You can generate <code class="docutils literal"><span class="pre">k-best</span></code> outputs for a given sequence by changing the default decoder <code class="docutils literal"><span class="pre">viterbi</span></code> to <code class="docutils literal"><span class="pre">beamsearch</span></code> and then set the <code class="docutils literal"><span class="pre">k_best</span></code> parameter to the desired value.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
+<span class="n">r2i</span> <span class="o">=</span> <span class="n">Transliterator</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;mal&#39;</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="s1">&#39;beamsearch&#39;</span><span class="p">)</span>
+<span class="n">words</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;sereleskar morocco calendar bhagyalakshmi bhoolokanathan</span>
+<span class="s1">        medical ernakulam kilometer vitamin management university</span>
+<span class="s1">        naukuchiatal&#39;&#39;&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1"> -&gt; </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span>
+                        <span class="s1">&#39;  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">r2i</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">k_best</span><span class="o">=</span><span class="mi">5</span><span class="p">))))</span>
+<span class="n">sereleskar</span> <span class="o">-&gt;</span> <span class="n">സേറെലേസ്കാര്</span>  <span class="n">സെറെലേസ്കാര്</span>  <span class="n">സേറെലേസ്കാര</span>  <span class="n">സെറെലേസ്കാര</span>  <span class="n">സേറെലേസ്കര്</span>
+<span class="n">morocco</span> <span class="o">-&gt;</span> <span class="n">മൊറോക്കോ</span>  <span class="n">മൊറോക്ഡോ</span>  <span class="n">മൊരോക്കോ</span>  <span class="n">മോറോക്കോ</span>  <span class="n">മൊറോക്കൂ</span>
+<span class="n">calendar</span> <span class="o">-&gt;</span> <span class="n">കേലെന്ദര</span>  <span class="n">കേലെന്ഡര</span>  <span class="n">കേലെന്ദ്ര</span>  <span class="n">കേലെന്ദാര</span>  <span class="n">കേലെന്ഡ്ര</span>
+<span class="n">bhagyalakshmi</span> <span class="o">-&gt;</span> <span class="n">ഭാഗ്യലക്ഷ്മീ</span>  <span class="n">ഭാഗ്യലക്ഷ്മി</span>  <span class="n">ഭഗ്യലക്ഷ്മീ</span>  <span class="n">ഭാഗ്യാലക്ഷ്മീ</span>  <span class="n">ഭഗ്യലക്ഷ്മി</span>
+<span class="n">bhoolokanathan</span> <span class="o">-&gt;</span> <span class="n">ഭൂലോകനാഥന</span>  <span class="n">ഭൂലോകാനാഥന</span>  <span class="n">ഭൂലോക്കനാഥന</span>  <span class="n">ബൂലോകനാഥന</span>  <span class="n">ഭൂലോകനാതന</span>
+<span class="n">medical</span> <span class="o">-&gt;</span> <span class="n">മെഡിക്കല്</span>  <span class="n">മെഡിക്കലും</span>  <span class="n">മെഡിക്കില്</span>  <span class="n">മ്മഎഡിക്കല്</span>  <span class="n">മേഡിക്കല്</span>
+<span class="n">ernakulam</span> <span class="o">-&gt;</span> <span class="n">എറണാകുളം</span>  <span class="n">ഈറണാകുളം</span>  <span class="n">എറണാകുലം</span>  <span class="n">എറണാകുളഅം</span>  <span class="n">എറണാകുളാം</span>
+<span class="n">kilometer</span> <span class="o">-&gt;</span> <span class="n">കിലോമീറ്റര്</span>  <span class="n">കിലോഈറ്റര്</span>  <span class="n">കിലോമീറ്റ്ര്</span>  <span class="n">കിലോമീറ്ററ്</span>  <span class="n">കിലോമീടര്</span>
+<span class="n">vitamin</span> <span class="o">-&gt;</span> <span class="n">വിറ്റാമിന്</span>  <span class="n">വിറ്റമിന്</span>  <span class="n">വൈറ്റാമിന്</span>  <span class="n">വിതാമിന്</span>  <span class="n">വിതആമിന്</span>
+<span class="n">management</span> <span class="o">-&gt;</span> <span class="n">മാനേജ്മെന്റ്</span>  <span class="n">മാനേജ്ഞ്മെന്റ്</span>  <span class="n">മാനേഗ്മെന്റ്</span>  <span class="n">മാംനേജ്മെന്റ്</span>  <span class="n">മാനേജ്മെതുറ്</span>
+<span class="n">university</span> <span class="o">-&gt;</span> <span class="n">യൂണിവേഴ്സിറ്റി</span>  <span class="n">യൂണിവേര്സിറ്റി</span>  <span class="n">യുണിവേഴ്സിറ്റി</span>  <span class="n">യൂനിവേഴ്സിറ്റി</span>  <span class="n">യൂണിവേഴ്സിറ്റീ</span>
+<span class="n">naukuchiatal</span> <span class="o">-&gt;</span> <span class="n">നകുചിയാറ്റാള്</span>  <span class="n">നകുചിയാറ്റാല്</span>  <span class="n">നകുചിയാറ്റാല</span>  <span class="n">നകുചിയാറ്റള്</span>  <span class="n">നകുചിയറ്റാള്</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transliterate-from-console">
+<h2>Transliterate from Console<a class="headerlink" href="#transliterate-from-console" title="Permalink to this headline">¶</a></h2>
+<p>You can transliterate text files directly using the console shortcut <code class="docutils literal"><span class="pre">indictrans</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">indictrans</span> <span class="o">--</span><span class="n">h</span>
+
+<span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>          <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+<span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>       <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
+<span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">source</span>        <span class="n">select</span> <span class="n">language</span> <span class="p">(</span><span class="mi">3</span> <span class="n">letter</span> <span class="n">ISO</span><span class="o">-</span><span class="mi">639</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span><span class="n">hin</span><span class="p">,</span> <span class="n">guj</span><span class="p">,</span> <span class="n">pan</span><span class="p">,</span>
+                    <span class="n">ben</span><span class="p">,</span> <span class="n">mal</span><span class="p">,</span> <span class="n">kan</span><span class="p">,</span> <span class="n">tam</span><span class="p">,</span> <span class="n">tel</span><span class="p">,</span> <span class="n">ori</span><span class="p">,</span> <span class="n">eng</span><span class="p">,</span> <span class="n">mar</span><span class="p">,</span> <span class="n">nep</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="n">kok</span><span class="p">,</span>
+                    <span class="n">asm</span><span class="p">,</span> <span class="n">urd</span><span class="p">}</span>
+<span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="o">--</span><span class="n">target</span>        <span class="n">select</span> <span class="n">language</span> <span class="p">(</span><span class="mi">3</span> <span class="n">letter</span> <span class="n">ISO</span><span class="o">-</span><span class="mi">639</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span><span class="n">hin</span><span class="p">,</span> <span class="n">guj</span><span class="p">,</span> <span class="n">pan</span><span class="p">,</span>
+                    <span class="n">ben</span><span class="p">,</span> <span class="n">mal</span><span class="p">,</span> <span class="n">kan</span><span class="p">,</span> <span class="n">tam</span><span class="p">,</span> <span class="n">tel</span><span class="p">,</span> <span class="n">ori</span><span class="p">,</span> <span class="n">eng</span><span class="p">,</span> <span class="n">mar</span><span class="p">,</span> <span class="n">nep</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="n">kok</span><span class="p">,</span>
+                    <span class="n">asm</span><span class="p">,</span> <span class="n">urd</span><span class="p">}</span>
+<span class="o">-</span><span class="n">b</span><span class="p">,</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">lookup</span>  <span class="n">build</span> <span class="n">lookup</span> <span class="n">to</span> <span class="n">fasten</span> <span class="n">transliteration</span>
+<span class="o">-</span><span class="n">i</span><span class="p">,</span> <span class="o">--</span><span class="nb">input</span>         <span class="o">&lt;</span><span class="nb">input</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;</span>
+<span class="o">-</span><span class="n">o</span><span class="p">,</span> <span class="o">--</span><span class="n">output</span>        <span class="o">&lt;</span><span class="n">output</span><span class="o">-</span><span class="n">file</span><span class="o">&gt;</span>
+
+
+<span class="n">indictrans</span> <span class="o">&lt;</span> <span class="n">hindi</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">s</span> <span class="n">hin</span> <span class="o">--</span><span class="n">t</span> <span class="n">eng</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">lookup</span> <span class="o">&gt;</span> <span class="n">hindi</span><span class="o">-</span><span class="n">rom</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">indictrans</span> <span class="o">&lt;</span> <span class="n">roman</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">s</span> <span class="n">hin</span> <span class="o">--</span><span class="n">t</span> <span class="n">eng</span> <span class="o">--</span><span class="n">build</span><span class="o">-</span><span class="n">lookup</span> <span class="o">&gt;</span> <span class="n">roman</span><span class="o">-</span><span class="n">hin</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="guide_model.html" class="btn btn-neutral" title="Model Setup &amp; Training" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Irshad Ahmad Bhat.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'latest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

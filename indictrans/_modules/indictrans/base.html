@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>indictrans.base &mdash; indictrans latest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="indictrans latest documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> indictrans
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../module_trans.html">Module References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../guide_installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide_model.html">Model Setup &amp; Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide_transliteration.html">Transliteration</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">indictrans</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>indictrans.base</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for indictrans.base</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="c1"># Copyright (C) 2015 Irshad Ahmad Bhat</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Transliteration Tool:</span>
+<span class="sd">Indic to Roman transliterator</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="k">import</span> <span class="n">issparse</span>
+
+<span class="kn">from</span> <span class="nn">._utils</span> <span class="k">import</span> <span class="p">(</span><span class="n">WX</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">,</span> <span class="n">UrduNormalizer</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="BaseTransliterator"><a class="viewcode-back" href="../../module_trans.html#indictrans.base.BaseTransliterator">[docs]</a><span class="k">class</span> <span class="nc">BaseTransliterator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Base class for transliterator.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    vectorizer_ : instance</span>
+<span class="sd">        `OneHotEncoder` instance for converting categorical features to</span>
+<span class="sd">        one-hot features.</span>
+
+<span class="sd">    classes_ : dict</span>
+<span class="sd">        Dictionary of set of tags with unique ids ({id: tag}).</span>
+
+<span class="sd">    coef_ : array</span>
+<span class="sd">        HMM coefficient array</span>
+
+<span class="sd">    intercept_init_ : array</span>
+<span class="sd">        HMM intercept array for first layer of trellis.</span>
+
+<span class="sd">    intercept_trans_ : array</span>
+<span class="sd">        HMM intercept/transition array for middle layers of trellis.</span>
+
+<span class="sd">    intercept_final_ : array</span>
+<span class="sd">        HMM intercept array for last layer of trellis.</span>
+
+<span class="sd">    wx_process : method</span>
+<span class="sd">        `wx2utf`/`utf2wx` method of `WX` instance</span>
+
+<span class="sd">    nu : instance</span>
+<span class="sd">        `UrduNormalizer` instance for normalizing Urdu scripts.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">build_lookup</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">source</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mar&#39;</span><span class="p">,</span> <span class="s1">&#39;nep&#39;</span><span class="p">,</span> <span class="s1">&#39;kok&#39;</span><span class="p">,</span> <span class="s1">&#39;bod&#39;</span><span class="p">):</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;hin&#39;</span>
+        <span class="k">elif</span> <span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;asm&#39;</span><span class="p">:</span>
+            <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;ben&#39;</span>
+        <span class="k">if</span> <span class="n">target</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;mar&#39;</span><span class="p">,</span> <span class="s1">&#39;nep&#39;</span><span class="p">,</span> <span class="s1">&#39;kok&#39;</span><span class="p">,</span> <span class="s1">&#39;bod&#39;</span><span class="p">):</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;hin&#39;</span>
+        <span class="k">elif</span> <span class="n">target</span> <span class="o">==</span> <span class="s1">&#39;asm&#39;</span><span class="p">:</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;ben&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">source</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lookup</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_lookup</span> <span class="o">=</span> <span class="n">build_lookup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">decoder</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tab</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x01\x03</span><span class="s1">&#39;</span>  <span class="c1"># mask tabs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">space</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x02\x04</span><span class="s1">&#39;</span>  <span class="c1"># mask spaces</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esc_ch</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\x00</span><span class="s1">&#39;</span>  <span class="c1"># escape-sequence for Roman in WX</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_fit</span><span class="p">()</span>
+
+<div class="viewcode-block" id="BaseTransliterator.load_models"><a class="viewcode-back" href="../../module_trans.html#indictrans.base.BaseTransliterator.load_models">[docs]</a>    <span class="k">def</span> <span class="nf">load_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Loads transliteration models.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">vectorizer_</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/models/</span><span class="si">%s</span><span class="s1">/sparse.vec&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">))</span> <span class="k">as</span> <span class="n">jfp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">vectorizer_</span><span class="o">.</span><span class="n">unique_feats</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">jfp</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/models/</span><span class="si">%s</span><span class="s1">/classes.npy&#39;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/models/</span><span class="si">%s</span><span class="s1">/coef.npy&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_init_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/models/</span><span class="si">%s</span><span class="s1">/intercept_init.npy&#39;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_trans_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/models/</span><span class="si">%s</span><span class="s1">/intercept_trans.npy&#39;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intercept_final_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span>
+            <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/models/</span><span class="si">%s</span><span class="s1">/intercept_final.npy&#39;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span> <span class="n">model</span><span class="p">),</span>
+            <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">load_mappings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># initialize punctuation map table</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">punkt_tbl</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/mappings/punkt.map&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">dist_dir</span><span class="p">,</span>
+                     <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">punkt_fp</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">punkt_fp</span><span class="p">:</span>
+                <span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">==</span> <span class="s1">&#39;urd&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">]:</span>
+                        <span class="k">continue</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">punkt_tbl</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">s</span><span class="p">)]</span> <span class="o">=</span> <span class="n">t</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">punkt_tbl</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span> <span class="o">=</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="nf">base_fit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># load models</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_models</span><span class="p">()</span>
+        <span class="c1"># load mapping tables for Urdu</span>
+        <span class="k">if</span> <span class="s1">&#39;urd&#39;</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">load_mappings</span><span class="p">()</span>
+        <span class="c1"># initialize Urdu Normalizer</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;urd&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">nu</span> <span class="o">=</span> <span class="n">UrduNormalizer</span><span class="p">()</span>
+        <span class="c1"># initialize wx-converter and character-maps</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="s1">&#39;urd&#39;</span><span class="p">]:</span>
+            <span class="n">wxp</span> <span class="o">=</span> <span class="n">WX</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;wx2utf&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wx_process</span> <span class="o">=</span> <span class="n">wxp</span><span class="o">.</span><span class="n">wx2utf</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wxp</span> <span class="o">=</span> <span class="n">WX</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="s1">&#39;utf2wx&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wx_process</span> <span class="o">=</span> <span class="n">wxp</span><span class="o">.</span><span class="n">utf2wx</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mask_roman</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r&#39;([a-zA-Z]+)&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="BaseTransliterator.predict"><a class="viewcode-back" href="../../module_trans.html#indictrans.base.BaseTransliterator.predict">[docs]</a>    <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="n">k_best</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Given encoded word matrix and HMM parameters, predicts output</span>
+<span class="sd">        sequence (target word)&quot;&quot;&quot;</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorizer_</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">decode</span> <span class="o">==</span> <span class="s1">&#39;viterbi&#39;</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+                <span class="n">scores</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intercept_trans_</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intercept_init_</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intercept_final_</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">pid</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">y</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">top_seq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+                <span class="n">scores</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intercept_trans_</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intercept_init_</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intercept_final_</span><span class="p">,</span>
+                <span class="n">k_best</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">y</span><span class="p">:</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">pid</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">path</span><span class="p">]</span>
+                <span class="n">w</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">top_seq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">top_seq</span></div>
+
+<div class="viewcode-block" id="BaseTransliterator.convert_to_wx"><a class="viewcode-back" href="../../module_trans.html#indictrans.base.BaseTransliterator.convert_to_wx">[docs]</a>    <span class="k">def</span> <span class="nf">convert_to_wx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Converts Indic scripts to WX.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;eng&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;urd&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nu</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;ben&#39;</span><span class="p">:</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u09f0</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\u09b0</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u09f1</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\u09ac</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_roman</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">r&#39;</span><span class="si">%s</span><span class="s1">\1&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esc_ch</span><span class="p">),</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wx_process</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span></div>
+
+<div class="viewcode-block" id="BaseTransliterator.transliterate"><a class="viewcode-back" href="../../module_trans.html#indictrans.base.BaseTransliterator.transliterate">[docs]</a>    <span class="k">def</span> <span class="nf">transliterate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">k_best</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Single best transliteration using viterbi decoding.&quot;&quot;&quot;</span>
+        <span class="n">trans_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_wx</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">)</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+                <span class="n">trans_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+                <span class="k">continue</span>
+            <span class="n">trans_line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_alpha</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">trans_line</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">case_trans</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            <span class="n">trans_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trans_line</span><span class="p">)</span>
+        <span class="n">trans_line</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">trans_list</span><span class="p">)</span>
+        <span class="n">trans_line</span> <span class="o">=</span> <span class="n">trans_line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">space</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">trans_line</span> <span class="o">=</span> <span class="n">trans_line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tab</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">trans_line</span></div>
+
+<div class="viewcode-block" id="BaseTransliterator.top_n_trans"><a class="viewcode-back" href="../../module_trans.html#indictrans.base.BaseTransliterator.top_n_trans">[docs]</a>    <span class="k">def</span> <span class="nf">top_n_trans</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">k_best</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns k-best transliterations using beamsearch decoding.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        k_best : int, default: 5, optional</span>
+<span class="sd">            Used by `Beamsearch` decoder to return k-best transliterations.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">k_best</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;`k_best` value should be &gt;= 2&#39;</span><span class="p">)</span>
+        <span class="n">trans_word</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">convert_to_wx</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">non_alpha</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+            <span class="n">op_word</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">case_trans</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">k_best</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op_word</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">trans_word</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op_word</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">trans_word</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">word</span><span class="p">]</span> <span class="o">*</span> <span class="n">k_best</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">trans_word</span><span class="p">)]</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Irshad Ahmad Bhat.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'latest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model Setup &amp; Training &mdash; indictrans latest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="indictrans latest documentation" href="index.html"/>
+        <link rel="next" title="Transliteration" href="guide_transliteration.html"/>
+        <link rel="prev" title="Installation" href="guide_installation.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> indictrans
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="module_trans.html">Module References</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="guide_installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Setup &amp; Training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#train-and-test">Train and Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-directly-from-console">Train directly from Console</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guide_transliteration.html">Transliteration</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">indictrans</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Model Setup &amp; Training</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/guide_model.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model-setup-training">
+<h1>Model Setup &amp; Training<a class="headerlink" href="#model-setup-training" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="train-and-test">
+<span id="example-train"></span><h2>Train and Test<a class="headerlink" href="#train-and-test" title="Permalink to this headline">¶</a></h2>
+<p>Assuming your data is in <code class="docutils literal"><span class="pre">tnt</span></code> format you can encode the data ane train a <a class="reference internal" href="module_trans.html#indictrans.trunk.StructuredPerceptron" title="indictrans.trunk.StructuredPerceptron"><code class="xref py py-class docutils literal"><span class="pre">indictrans.trunk.StructuredPerceptron</span></code></a> classifier.</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">trunk</span>
+<span class="c1">#load trianing data</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;indictrans/trunk/tests/hin2rom.tnt&#39;</span><span class="p">)</span>
+<span class="c1">#build ngram-context</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">build_context</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1">#fit encoder</span>
+<span class="n">enc</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">fit_encoder</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1">#train structured-perceptron model</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">train_sp</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Iteration</span> <span class="mi">1</span> <span class="o">...</span>
+<span class="n">Train</span><span class="o">-</span><span class="nb">set</span> <span class="n">error</span> <span class="o">=</span> <span class="mf">1.5490</span>
+<span class="n">Iteration</span> <span class="mi">2</span> <span class="o">...</span>
+<span class="n">Train</span><span class="o">-</span><span class="nb">set</span> <span class="n">error</span> <span class="o">=</span> <span class="mf">1.0040</span>
+<span class="n">Iteration</span> <span class="mi">3</span> <span class="o">...</span>
+<span class="n">Train</span><span class="o">-</span><span class="nb">set</span> <span class="n">error</span> <span class="o">=</span> <span class="mf">0.8030</span>
+<span class="n">Iteration</span> <span class="mi">4</span> <span class="o">...</span>
+<span class="n">Train</span><span class="o">-</span><span class="nb">set</span> <span class="n">error</span> <span class="o">=</span> <span class="mf">0.6900</span>
+<span class="n">Iteration</span> <span class="mi">5</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>This will train the perceptron for 5 epochs (specified via the <code class="docutils literal"><span class="pre">n_iter</span></code> parameter).</p>
+<p>Then you can use the trained classifier as follows:</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#load testing data</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;indictrans/trunk/tests/hin2rom.tnt&#39;</span><span class="p">)</span>
+<span class="c1">#build ngram-context for testing data</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">build_context</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># ngram value should be same as for train-set</span>
+<span class="c1">#encode test-set</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="p">[</span><span class="n">enc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X_test</span><span class="p">]</span>
+<span class="c1">#predict output sequences</span>
+<span class="n">y_</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># True</span>
+<span class="p">[</span><span class="s1">u&#39;c&#39;</span><span class="p">,</span> <span class="s1">u&#39;l&#39;</span><span class="p">,</span> <span class="s1">u&#39;a&#39;</span><span class="p">,</span> <span class="s1">u&#39;ne&#39;</span><span class="p">,</span> <span class="s1">u&#39;_&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y_</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Predicted</span>
+<span class="p">[</span><span class="s1">u&#39;c&#39;</span><span class="p">,</span> <span class="s1">u&#39;l&#39;</span><span class="p">,</span> <span class="s1">u&#39;a&#39;</span><span class="p">,</span> <span class="s1">u&#39;n&#39;</span><span class="p">,</span> <span class="s1">u&#39;_&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y_</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>  <span class="c1"># True</span>
+<span class="p">[</span><span class="s1">u&#39;p&#39;</span><span class="p">,</span> <span class="s1">u&#39;a&#39;</span><span class="p">,</span> <span class="s1">u&#39;r&#39;</span><span class="p">,</span> <span class="s1">u&#39;aa&#39;</span><span class="p">,</span> <span class="s1">u&#39;n&#39;</span><span class="p">,</span> <span class="s1">u&#39;d&#39;</span><span class="p">,</span> <span class="s1">u&#39;e&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y_</span><span class="p">[</span><span class="mi">100</span><span class="p">]</span>  <span class="c1"># Predicted</span>
+<span class="p">[</span><span class="s1">u&#39;p&#39;</span><span class="p">,</span> <span class="s1">u&#39;a&#39;</span><span class="p">,</span> <span class="s1">u&#39;r&#39;</span><span class="p">,</span> <span class="s1">u&#39;aa&#39;</span><span class="p">,</span> <span class="s1">u&#39;n&#39;</span><span class="p">,</span> <span class="s1">u&#39;d&#39;</span><span class="p">,</span> <span class="s1">u&#39;e&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that you need to <code class="docutils literal"><span class="pre">build-context</span></code> using the same <code class="docutils literal"><span class="pre">ngram</span></code> value as used for trainig data. Also you need to <code class="docutils literal"><span class="pre">encode</span></code> test data using the encoder <code class="docutils literal"><span class="pre">enc</span></code> developed on training data.</p>
+</div>
+<div class="section" id="train-directly-from-console">
+<span id="example-train-from-console"></span><h2>Train directly from Console<a class="headerlink" href="#train-directly-from-console" title="Permalink to this headline">¶</a></h2>
+<p><cite>indictrans-trunk</cite> provides a much easier way to train, test and save models directly from console.</p>
+<pre class="literal-block">
+<a class="reference external" href="mailto:user&#37;&#52;&#48;indic">user<span>&#64;</span>indic</a>-trans$ indictrans-trunk --help
+
+-d , --data-file      training data-file: set of sequences
+-o , --output-dir     output directory to dump trained models
+-n , --ngrams         ngram context for feature extraction: default 4
+-e , --lr-exp         The Exponent used for inverse scaling oflearning rate:
+                      default 0.1
+-m , --max-iter       Maximum number of iterations for training: default 15
+-r , --random-state   Random seed for shuffling sequences within each
+                      iteration.
+-l , --verbosity      Verbosity level: default 0 (quiet moe)
+-t , --test-file      testing data-file: optional: stores output sequences
+                      in <cite>test_file.out</cite>
+
+<a class="reference external" href="mailto:user&#37;&#52;&#48;indic">user<span>&#64;</span>indic</a>-trans$ indictrans-trunk -d hin2rom.tnt -o /tmp/rom-ind/ -n 4 -e 0.1 -m 5 -l 3 -t hin2rom.tnt
+Iteration 1 ...
+First sequence comparision: 0-27 0-95 0-30 0-10 ... loss: 4
+Train-set error = 1.8090
+Iteration 2 ...
+First sequence comparision: 120-46 86-86 63-63 120-120 95-95 123-123 10-10 ... loss: 1
+Train-set error = 0.6560
+Iteration 3 ...
+First sequence comparision: 123-123 110-110 40-40 46-46 ... loss: 0
+Train-set error = 0.3820
+Iteration 4 ...
+First sequence comparision: 2-2 95-95 86-86 77-77 64-64 31-31 120-120 80-80 10-10 ... loss: 0
+Train-set error = 0.2240
+Iteration 5 ...
+First sequence comparision: 40-40 120-120 31-31 120-120 125-125 120-120 123-123 117-117 31-31 120-120 ... loss: 0
+Train-set error = 0.1540
+
+Testing ...
+</pre>
+<p>Assuming <code class="docutils literal"><span class="pre">hin2rom.tnt</span></code> was given as <code class="docutils literal"><span class="pre">test-file</span></code>, the output file will be generated with the name <code class="docutils literal"><span class="pre">hin2rom.tnt.out</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="guide_transliteration.html" class="btn btn-neutral float-right" title="Transliteration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="guide_installation.html" class="btn btn-neutral" title="Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Irshad Ahmad Bhat.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'latest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="static/jquery.js"></script>
+      <script type="text/javascript" src="static/underscore.js"></script>
+      <script type="text/javascript" src="static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
