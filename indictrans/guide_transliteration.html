@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Transliteration &mdash; indictrans latest documentation</title>
+  <title>Transliteration &mdash; indictrans 1.0.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="indictrans latest documentation" href="index.html"/>
+    <link rel="top" title="indictrans 1.0.0 documentation" href="index.html"/>
         <link rel="prev" title="Model Setup &amp; Training" href="guide_model.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                latest
+                1.0
               </div>
             
           
@@ -141,7 +141,7 @@
 <div class="section" id="transliterate">
 <span id="example-trans"></span><h2>Transliterate<a class="headerlink" href="#transliterate" title="Permalink to this headline">¶</a></h2>
 <p>In order to transliterate raw text, you can use the <a class="reference internal" href="module_trans.html#indictrans.Transliterator" title="indictrans.Transliterator"><code class="xref py py-class docutils literal"><span class="pre">indictrans.Transliterator</span></code></a> which uses already trained models to transliterate the text. If the input text contains repeating words, which raw text generally does, make sure to set <code class="docutils literal"><span class="pre">build_lookup</span></code> flag to <code class="docutils literal"><span class="pre">True</span></code>. As the name indicates this builds lookup for transliterated words and thus avoids repeated transliteration of same words. This saves a lot of time if the input corpus is too big.</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
 <span class="n">trn</span> <span class="o">=</span> <span class="n">Transliterator</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;hin&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">build_lookup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">hin</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;कांग्रेस पार्टी अध्यक्ष सोनिया गांधी, तमिलनाडु की मुख्यमंत्री</span>
 <span class="s2">जयललिता और रिज़र्व बैंक के गवर्नर रघुराम राजन के बीच एक समानता</span>
@@ -169,7 +169,7 @@
 <div class="section" id="k-best-transliterations">
 <h2>K-Best Transliterations<a class="headerlink" href="#k-best-transliterations" title="Permalink to this headline">¶</a></h2>
 <p>You can generate <code class="docutils literal"><span class="pre">k-best</span></code> outputs for a given sequence by changing the default decoder <code class="docutils literal"><span class="pre">viterbi</span></code> to <code class="docutils literal"><span class="pre">beamsearch</span></code> and then set the <code class="docutils literal"><span class="pre">k_best</span></code> parameter to the desired value.</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
 <span class="n">r2i</span> <span class="o">=</span> <span class="n">Transliterator</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;mal&#39;</span><span class="p">,</span> <span class="n">decode</span><span class="o">=</span><span class="s1">&#39;beamsearch&#39;</span><span class="p">)</span>
 <span class="n">words</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;sereleskar morocco calendar bhagyalakshmi bhoolokanathan</span>
 <span class="s1">        medical ernakulam kilometer vitamin management university</span>
@@ -195,7 +195,7 @@
 <div class="section" id="transliterate-from-console">
 <h2>Transliterate from Console<a class="headerlink" href="#transliterate-from-console" title="Permalink to this headline">¶</a></h2>
 <p>You can transliterate text files directly using the console shortcut <code class="docutils literal"><span class="pre">indictrans</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">indictrans</span> <span class="o">--</span><span class="n">h</span>
+<div class="highlight-default"><div class="highlight"><pre><span class="n">indictrans</span> <span class="o">--</span><span class="n">h</span>
 
 <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>          <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
 <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>       <span class="n">show</span> <span class="n">program</span><span class="s1">&#39;s version number and exit</span>
@@ -256,7 +256,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'latest',
+            VERSION:'1.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

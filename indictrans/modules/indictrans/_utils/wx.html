@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>indictrans._utils.wx &mdash; indictrans latest documentation</title>
+  <title>indictrans._utils.wx &mdash; indictrans 1.0.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="indictrans latest documentation" href="../../../index.html"/>
+    <link rel="top" title="indictrans 1.0.0 documentation" href="../../../index.html"/>
         <link rel="up" title="Module code" href="../../index.html"/> 
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                latest
+                1.0
               </div>
             
           
@@ -132,15 +132,15 @@
            <div itemprop="articleBody">
             
   <h1>Source code for indictrans._utils.wx</h1><div class="highlight"><pre>
-<span></span><span class="ch">#! /usr/bin/env python</span>
+<span class="ch">#! /usr/bin/env python</span>
 <span class="c1"># -*- coding:utf-8 -*-</span>
 
 <span class="c1"># Copyright Irshad Ahmad Bhat 2016.</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">unicode_literals</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">unicode_literals</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">from</span> <span class="nn">six</span> <span class="k">import</span> <span class="n">unichr</span>
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="nb">unichr</span>
 
 
 <div class="viewcode-block" id="WX"><a class="viewcode-back" href="../../../module_trans.html#indictrans._utils.WX">[docs]</a><span class="k">class</span> <span class="nc">WX</span><span class="p">():</span>
@@ -195,15 +195,15 @@
         <span class="c1"># Handle iscii characters</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iscii_num</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="nb">zip</span><span class="p">(</span>
-                <span class="p">[</span><span class="n">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">161</span><span class="p">,</span> <span class="mi">252</span><span class="p">)],</span>
-                <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="si">%s</span><span class="se">\x04</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">391</span><span class="p">)]))</span>
+                <span class="p">[</span><span class="nb">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">161</span><span class="p">,</span> <span class="mi">252</span><span class="p">)],</span>
+                <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="si">%s</span><span class="se">\x04</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">391</span><span class="p">)]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">num_iscii</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="nb">zip</span><span class="p">(</span>
-                <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="si">%s</span><span class="se">\x04</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">391</span><span class="p">)],</span>
-                <span class="p">[</span><span class="n">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">161</span><span class="p">,</span> <span class="mi">252</span><span class="p">)]))</span>
+                <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="si">%s</span><span class="se">\x04</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">391</span><span class="p">)],</span>
+                <span class="p">[</span><span class="nb">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">161</span><span class="p">,</span> <span class="mi">252</span><span class="p">)]))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mask_isc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;([</span><span class="se">\xA1</span><span class="s1">-</span><span class="se">\xFB</span><span class="s1">])&#39;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unmask_isc</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;(</span><span class="si">%s</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="s1">&#39;|&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-            <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="si">%s</span><span class="se">\x04</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">391</span><span class="p">)]))</span>
+            <span class="p">[</span><span class="s1">&#39;</span><span class="se">\x03</span><span class="si">%s</span><span class="se">\x04</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">unichr</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">391</span><span class="p">)]))</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;utf2wx&quot;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">initialize_utf2wx_hash</span><span class="p">()</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">==</span> <span class="s2">&quot;wx2utf&quot;</span><span class="p">:</span>
@@ -252,7 +252,7 @@
             <span class="s2">&quot;.&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xEA</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xFB</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;lY&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xD2</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="c1"># Added for tamil -Rashid</span>
+            <span class="c1"># Added for tamil</span>
             <span class="s2">&quot;rY&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xD0</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;nY&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xC7</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;lYY&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xD3</span><span class="s2">&quot;</span><span class="p">,</span>
@@ -352,7 +352,7 @@
             <span class="s2">&quot;</span><span class="se">\xAB</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u090E</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel E</span>
             <span class="s2">&quot;</span><span class="se">\xAC</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u090F</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel EY</span>
             <span class="s2">&quot;</span><span class="se">\xAD</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0910</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AI</span>
-            <span class="s2">&quot;</span><span class="se">\xAE</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u090D</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AI -Rashid added</span>
+            <span class="s2">&quot;</span><span class="se">\xAE</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u090D</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AI</span>
             <span class="s2">&quot;</span><span class="se">\xB2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u090D</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AYE (Devanagari Script)</span>
             <span class="s2">&quot;</span><span class="se">\xAF</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0912</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel O</span>
             <span class="s2">&quot;</span><span class="se">\xB0</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0913</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel OW</span>
@@ -437,12 +437,9 @@
             <span class="s2">&quot;</span><span class="se">\xAB</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C0E</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel E</span>
             <span class="s2">&quot;</span><span class="se">\xAC</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C0F</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel EY</span>
             <span class="s2">&quot;</span><span class="se">\xAD</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C10</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AI</span>
-            <span class="c1"># &quot;\xB2&quot;:&quot;\u090D&quot;,  #Vowel AYE (Devanagari Script) 7-Mar-11</span>
-            <span class="c1"># -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xAF</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C12</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel O</span>
             <span class="s2">&quot;</span><span class="se">\xB0</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C13</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel OW</span>
             <span class="s2">&quot;</span><span class="se">\xB1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C14</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AU</span>
-            <span class="c1"># &quot;\xB2&quot;:&quot;\u0911&quot;,  #Vowel AWE 7-Mar-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xB3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C15</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant KA</span>
             <span class="s2">&quot;</span><span class="se">\xB4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C16</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant KHA</span>
             <span class="s2">&quot;</span><span class="se">\xB5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C17</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant GA</span>
@@ -463,7 +460,6 @@
             <span class="s2">&quot;</span><span class="se">\xC4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C26</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Soft DA</span>
             <span class="s2">&quot;</span><span class="se">\xC5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C27</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Soft DHA</span>
             <span class="s2">&quot;</span><span class="se">\xC6</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C28</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Soft NA</span>
-            <span class="c1"># &quot;\xC7&quot;:&quot;\u0929&quot;,  #Consonant NA (Tamil) 28-Feb-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xC8</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C2A</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant PA</span>
             <span class="s2">&quot;</span><span class="se">\xC9</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C2B</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant PHA</span>
             <span class="s2">&quot;</span><span class="se">\xCA</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C2C</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant BA</span>
@@ -474,7 +470,6 @@
             <span class="s2">&quot;</span><span class="se">\xD0</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C31</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Hard RA (Southern Script)</span>
             <span class="s2">&quot;</span><span class="se">\xD1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C32</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant LA</span>
             <span class="s2">&quot;</span><span class="se">\xD2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C33</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Hard LA</span>
-            <span class="c1"># &quot;\xD3&quot;:&quot;\u0934&quot;,  #Consonant LLLA 7-Mar-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xD4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C35</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant VA</span>
             <span class="s2">&quot;</span><span class="se">\xD5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C36</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant SHA</span>
             <span class="s2">&quot;</span><span class="se">\xD6</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C37</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Hard SHA</span>
@@ -489,15 +484,10 @@
             <span class="s2">&quot;</span><span class="se">\xE0</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C46</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Sign E (Southern Scripts)</span>
             <span class="s2">&quot;</span><span class="se">\xE1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C47</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Sign EY</span>
             <span class="s2">&quot;</span><span class="se">\xE2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C48</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Sign AI</span>
-            <span class="c1"># &quot;\xE3&quot;:&quot;\u0945&quot;,  #Vowel Sign AYE (Devanagari Script)</span>
-            <span class="c1"># 7-Mar-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xE4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C4A</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Sign O</span>
             <span class="s2">&quot;</span><span class="se">\xE5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C4B</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Sign OW</span>
             <span class="s2">&quot;</span><span class="se">\xE6</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C4C</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Sign AU</span>
-            <span class="c1"># &quot;\xE7&quot;:&quot;\u0949&quot;,  #Vowel Sign AWE (Devanagari Script)</span>
-            <span class="c1"># 7-Mar-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xE8</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C4D</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel Omission Sign (Halant)</span>
-            <span class="c1"># &quot;\xE9&quot;:&quot;\u093C&quot;,  #Diacritic Sign (Nukta) 7-Mar-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xEA</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span>  <span class="c1"># Fullstop</span>
             <span class="s2">&quot;</span><span class="se">\xF1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C66</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Digit 0</span>
             <span class="s2">&quot;</span><span class="se">\xF2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C67</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Digit 1</span>
@@ -512,8 +502,6 @@
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hashp_i2u</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;</span><span class="se">\xA1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A70</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier GURMUKHI TIPPI</span>
-            <span class="c1"># Added -Irshad</span>
-            <span class="c1"># &quot;\xA1&quot;:&quot;\u0A01&quot;,  #Vowel-modifier CHANDRABINDU</span>
             <span class="s2">&quot;</span><span class="se">\xA2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A02</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier ANUSWAR</span>
             <span class="s2">&quot;</span><span class="se">\xA3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A03</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier VISARG</span>
             <span class="s2">&quot;</span><span class="se">\xA4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A05</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel A</span>
@@ -595,7 +583,7 @@
             <span class="s2">&quot;</span><span class="se">\xF8</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A6D</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Digit 7</span>
             <span class="s2">&quot;</span><span class="se">\xF9</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A6E</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Digit 8</span>
             <span class="s2">&quot;</span><span class="se">\xFA</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A6F</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Digit 9</span>
-            <span class="s2">&quot;</span><span class="se">\xFB</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A71</span><span class="s2">&quot;</span>  <span class="c1"># GURMUKHI ADDAK  Added -Irshad</span>
+            <span class="s2">&quot;</span><span class="se">\xFB</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0A71</span><span class="s2">&quot;</span>  <span class="c1"># GURMUKHI ADDAK</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hashk_i2u</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;</span><span class="se">\xA2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0C82</span><span class="s2">&quot;</span><span class="p">,</span>
@@ -830,8 +818,6 @@
             <span class="s2">&quot;</span><span class="se">\xFA</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u09EF</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Digit 9</span>
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hashcta_i2u</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="c1"># &quot;\xA2&quot;:&quot;\u0B82&quot;,  #Vowel-modifier ANUSWAR commented</span>
-            <span class="c1"># 14-March-11 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xA2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BAE\u0BCD</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier ANUSWAR is m + halant</span>
             <span class="s2">&quot;</span><span class="se">\xA3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B83</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier VISARG</span>
             <span class="s2">&quot;</span><span class="se">\xA4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B85</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel A</span>
@@ -865,8 +851,6 @@
             <span class="s2">&quot;</span><span class="se">\xD2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BB3</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Hard LA</span>
             <span class="s2">&quot;</span><span class="se">\xD3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BB4</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant ZHA (Tamil &amp; Malyalam)</span>
             <span class="s2">&quot;</span><span class="se">\xD4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BB5</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant VA</span>
-            <span class="c1"># &quot;\xD5&quot;:&quot;\u0BB6&quot;,  #Consonant SHA commented because it have</span>
-            <span class="c1"># same sence of 0BB7 14-Mar-11</span>
             <span class="s2">&quot;</span><span class="se">\xD5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BB7</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant SHA is nomore use in tamil</span>
             <span class="s2">&quot;</span><span class="se">\xD6</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BB7</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant Hard SHA</span>
             <span class="s2">&quot;</span><span class="se">\xD7</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0BB8</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant SA</span>
@@ -906,13 +890,8 @@
             <span class="s2">&quot;</span><span class="se">\xA8</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B09</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel U</span>
             <span class="s2">&quot;</span><span class="se">\xA9</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B0A</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel UU</span>
             <span class="s2">&quot;</span><span class="se">\xAA</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B0B</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel RI</span>
-            <span class="c1"># &quot;\xAB&quot;:&quot;\u090E&quot;,  #Vowel E</span>
             <span class="s2">&quot;</span><span class="se">\xAC</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B0F</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel EY</span>
             <span class="s2">&quot;</span><span class="se">\xAD</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B10</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AI</span>
-            <span class="c1"># &quot;\xB2&quot;:&quot;\u0911&quot;,  #Vowel AWE</span>
-            <span class="c1"># &quot;\xAE&quot;:&quot;\u090D&quot;,  #Vowel AI -Rashid added</span>
-            <span class="c1"># &quot;\xB2&quot;:&quot;\u090D&quot;,  #Vowel AYE (Devanagari Script)</span>
-            <span class="c1"># &quot;\xAF&quot;:&quot;\u0912&quot;,  #Vowel O</span>
             <span class="s2">&quot;</span><span class="se">\xB0</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B13</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel OW</span>
             <span class="s2">&quot;</span><span class="se">\xB1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B14</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AU</span>
             <span class="s2">&quot;</span><span class="se">\xB3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0B15</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant KA</span>
@@ -1057,9 +1036,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">ceVmd</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])eV([MHz])&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ceV</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])eV&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
-        <span class="c1"># const+nukta+eV added for Bengali -Irshad</span>
+        <span class="c1"># const+nukta+eV added for Bengali</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cZeV</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])ZeV&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
-        <span class="c1"># const+nukta+eV+modifier added for Bengali -Irshad</span>
+        <span class="c1"># const+nukta+eV+modifier added for Bengali</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cZeVmd</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])ZeV([MHz])&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">cEYmd</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])EY([MHz])&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
@@ -1071,9 +1050,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">coVmd</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])oV([MHz])&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">coV</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])oV&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
-        <span class="c1"># const+nukta+oV added for Bengali -Irshad</span>
+        <span class="c1"># const+nukta+oV added for Bengali</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cZoV</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])ZoV&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
-        <span class="c1"># const+nukta+oV+modifier added for Bengali -Irshad</span>
+        <span class="c1"># const+nukta+oV+modifier added for Bengali</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cZoVmd</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])ZoV([MHz])&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">cOY</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="si">%s</span><span class="s2">])OY&quot;</span> <span class="o">%</span> <span class="n">const</span><span class="p">)</span>
@@ -1108,11 +1087,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">dig</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([0-9])&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">i2u</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;([</span><span class="se">\xA1</span><span class="s1">-</span><span class="se">\xFB</span><span class="s1">])&#39;</span><span class="p">)</span>
 
-        <span class="c1"># Handle Roman strings</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unmask_rom</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="s1">r&#39;(_[a-zA-Z0-9</span><span class="si">%s</span><span class="s1">]+_)&#39;</span> <span class="o">%</span>
-            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
-
     <span class="k">def</span> <span class="nf">initialize_utf2wx_hash</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hashc_i2w</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;</span><span class="se">\xB3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;k&quot;</span><span class="p">,</span>
@@ -1135,8 +1109,6 @@
             <span class="s2">&quot;</span><span class="se">\xC4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xC5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;X&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xC6</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;n&quot;</span><span class="p">,</span>
-            <span class="c1"># Representation for Consonant NA (Tamil) ??? Refer to ISCII-91.pdf</span>
-            <span class="c1"># page-16 -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\xC7</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;nY&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xC8</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xC9</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span>
@@ -1145,11 +1117,11 @@
             <span class="s2">&quot;</span><span class="se">\xCC</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;m&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xCD</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xCF</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span>
-            <span class="c1"># Representation for Consonant HARD RA (Southern Script) -Rashid</span>
+            <span class="c1"># Representation for Consonant HARD RA (Southern Script)</span>
             <span class="s2">&quot;</span><span class="se">\xD0</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;rY&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xD1</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;l&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xD2</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;lY&quot;</span><span class="p">,</span>
-            <span class="c1"># Representation for Consonant ZHA (Tamil &amp; Malyalam) - Rashid</span>
+            <span class="c1"># Representation for Consonant ZHA (Tamil &amp; Malyalam)</span>
             <span class="s2">&quot;</span><span class="se">\xD3</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;lYY&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xD4</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\xD5</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span>
@@ -1385,8 +1357,8 @@
         <span class="p">}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hashp_u2i</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;</span><span class="se">\u0A01</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA1</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier CHANDRABINDU</span>
-            <span class="c1"># Added -Rashid</span>
             <span class="s2">&quot;</span><span class="se">\u0A02</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA2</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier ANUSWAR</span>
+            <span class="s2">&quot;</span><span class="se">\u0A03</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA3</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel-modifier VISARG</span>
             <span class="s2">&quot;</span><span class="se">\u0A05</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA4</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel A</span>
             <span class="s2">&quot;</span><span class="se">\u0A06</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA5</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel AA</span>
             <span class="s2">&quot;</span><span class="se">\u0A07</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA6</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel I</span>
@@ -1791,7 +1763,7 @@
             <span class="s2">&quot;</span><span class="se">\u0B0A</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xA9</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel UU</span>
             <span class="s2">&quot;</span><span class="se">\u0B0B</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xAA</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Vowel RI</span>
             <span class="s2">&quot;</span><span class="se">\u0B0F</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xAC</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;</span><span class="se">\u0910</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xAD</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;</span><span class="se">\u0B10</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xAD</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\u0B13</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xB0</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\u0B14</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xB1</span><span class="s2">&quot;</span><span class="p">,</span>
             <span class="s2">&quot;</span><span class="se">\u0B15</span><span class="s2">&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\xB3</span><span class="s2">&quot;</span><span class="p">,</span>  <span class="c1"># Consonant KA</span>
@@ -1967,13 +1939,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">u2i_bn</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="se">\u09DC\u09DD\u09DF</span><span class="s2">])&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">u2i_pn</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([</span><span class="se">\u0A59</span><span class="s2">-</span><span class="se">\u0A5B\u0A5E</span><span class="s2">])&quot;</span><span class="p">)</span>
 
-        <span class="c1"># Handle Roman strings</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mask_rom</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="s1">r&#39;([0-9</span><span class="si">%s</span><span class="s1">]*[a-zA-Z][0-9a-zA-Z</span><span class="si">%s</span><span class="s1">]*)&#39;</span> <span class="o">%</span>
-            <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">punctuation</span><span class="p">,)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
-
 <div class="viewcode-block" id="WX.normalize"><a class="viewcode-back" href="../../../module_trans.html#indictrans._utils.WX.normalize">[docs]</a>    <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Performs some common normalization, which includes:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Performs some common normalization, which includes:</span>
 <span class="sd">        - Byte order mark, word joiner, etc. removal</span>
 <span class="sd">        - ZERO_WIDTH_NON_JOINER and ZERO_WIDTH_JOINER removal</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -2641,7 +2609,7 @@
 
 <div class="viewcode-block" id="WX.wx2iscii"><a class="viewcode-back" href="../../../module_trans.html#indictrans._utils.WX.wx2iscii">[docs]</a>    <span class="k">def</span> <span class="nf">wx2iscii</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">my_string</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert WX to ISCII&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang_tag</span> <span class="o">==</span> <span class="s1">&#39;pan&#39;</span><span class="p">:</span>  <span class="c1"># Added -Irshad</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lang_tag</span> <span class="o">==</span> <span class="s1">&#39;pan&#39;</span><span class="p">:</span>
             <span class="n">my_string</span> <span class="o">=</span> <span class="n">my_string</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;EY&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hashv_w2i</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
         <span class="n">my_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_ZeV</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
         <span class="n">my_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_eV</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
@@ -2860,7 +2828,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">hashmd_i2w</span><span class="p">[</span>
                 <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span>
             <span class="n">my_string</span><span class="p">)</span>
-        <span class="c1"># CONSONANT+NUKTA+HALANT (added -Rashid 29-December-11 wanaKZvaxara)</span>
+        <span class="c1"># CONSONANT+NUKTA+HALANT</span>
         <span class="n">my_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cnh</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
             <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">hashc_i2w</span><span class="p">[</span>
                 <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span> <span class="o">+</span>
@@ -3051,23 +3019,17 @@
 
 <div class="viewcode-block" id="WX.wx2utf"><a class="viewcode-back" href="../../../module_trans.html#indictrans._utils.WX.wx2utf">[docs]</a>    <span class="k">def</span> <span class="nf">wx2utf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wx</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Convert WX-Roman to UTF&quot;&quot;&quot;</span>
-        <span class="n">unicode_</span> <span class="o">=</span> <span class="nb">str</span><span class="p">()</span>
-        <span class="n">wx_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unmask_rom</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">wx</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">wx</span> <span class="ow">in</span> <span class="n">wx_list</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">wx</span><span class="p">:</span>
-                <span class="k">continue</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># Mask iscii characters (if any)</span>
-                <span class="n">wx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_isc</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                    <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">iscii_num</span><span class="p">[</span>
-                        <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">wx</span><span class="p">)</span>
-                <span class="n">iscii</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wx2iscii</span><span class="p">(</span><span class="n">wx</span><span class="p">)</span>
-                <span class="c1"># Convert ISCII to Unicode</span>
-                <span class="n">unicode_t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iscii2unicode</span><span class="p">(</span><span class="n">iscii</span><span class="p">)</span>
-                <span class="c1"># Unmask iscii characters</span>
-                <span class="n">unicode_</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unmask_isc</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
-                    <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_iscii</span><span class="p">[</span>
-                        <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">unicode_t</span><span class="p">)</span>
+        <span class="c1"># Mask iscii characters (if any)</span>
+        <span class="n">wx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_isc</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">iscii_num</span><span class="p">[</span>
+                <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">wx</span><span class="p">)</span>
+        <span class="n">iscii</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wx2iscii</span><span class="p">(</span><span class="n">wx</span><span class="p">)</span>
+        <span class="c1"># Convert ISCII to Unicode</span>
+        <span class="n">unicode_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iscii2unicode</span><span class="p">(</span><span class="n">iscii</span><span class="p">)</span>
+        <span class="c1"># Unmask iscii characters</span>
+        <span class="n">unicode_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unmask_isc</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_iscii</span><span class="p">[</span>
+                <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)],</span> <span class="n">unicode_</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">unicode_</span></div></div>
 </pre></div>
 
@@ -3102,7 +3064,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'latest',
+            VERSION:'1.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

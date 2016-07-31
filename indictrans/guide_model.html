@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Model Setup &amp; Training &mdash; indictrans latest documentation</title>
+  <title>Model Setup &amp; Training &mdash; indictrans 1.0.0 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="indictrans latest documentation" href="index.html"/>
+    <link rel="top" title="indictrans 1.0.0 documentation" href="index.html"/>
         <link rel="next" title="Transliteration" href="guide_transliteration.html"/>
         <link rel="prev" title="Installation" href="guide_installation.html"/> 
 
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                latest
+                1.0
               </div>
             
           
@@ -141,7 +141,7 @@
 <div class="section" id="train-and-test">
 <span id="example-train"></span><h2>Train and Test<a class="headerlink" href="#train-and-test" title="Permalink to this headline">¶</a></h2>
 <p>Assuming your data is in <code class="docutils literal"><span class="pre">tnt</span></code> format you can encode the data ane train a <a class="reference internal" href="module_trans.html#indictrans.trunk.StructuredPerceptron" title="indictrans.trunk.StructuredPerceptron"><code class="xref py py-class docutils literal"><span class="pre">indictrans.trunk.StructuredPerceptron</span></code></a> classifier.</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">trunk</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">trunk</span>
 <span class="c1">#load trianing data</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;indictrans/trunk/tests/hin2rom.tnt&#39;</span><span class="p">)</span>
 <span class="c1">#build ngram-context</span>
@@ -163,7 +163,7 @@
 </div>
 <p>This will train the perceptron for 5 epochs (specified via the <code class="docutils literal"><span class="pre">n_iter</span></code> parameter).</p>
 <p>Then you can use the trained classifier as follows:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="c1">#load testing data</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span class="c1">#load testing data</span>
 <span class="n">X_test</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="s1">&#39;indictrans/trunk/tests/hin2rom.tnt&#39;</span><span class="p">)</span>
 <span class="c1">#build ngram-context for testing data</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">trunk</span><span class="o">.</span><span class="n">build_context</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">ngram</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># ngram value should be same as for train-set</span>
@@ -265,7 +265,7 @@ Testing ...
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'latest',
+            VERSION:'1.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

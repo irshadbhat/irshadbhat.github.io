@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module References &mdash; indictrans latest documentation</title>
+  <title>Module References &mdash; indictrans 1.0.0 documentation</title>
   
 
   
@@ -30,8 +30,7 @@
   
 
   
-    <link rel="top" title="indictrans latest documentation" href="index.html"/>
-        <link rel="next" title="Installation" href="guide_installation.html"/>
+    <link rel="top" title="indictrans 1.0.0 documentation" href="index.html"/>
         <link rel="prev" title="Welcome to indictrans’s documentation!" href="index.html"/> 
 
   
@@ -60,7 +59,7 @@
             
             
               <div class="version">
-                latest
+                1.0
               </div>
             
           
@@ -83,12 +82,24 @@
             
                 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Module References</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#indictrans-transliterator-transliterator"><code class="docutils literal"><span class="pre">indictrans.transliterator</span></code> — Transliterator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#indictrans-base-basetransliterator-basetransliterator"><code class="docutils literal"><span class="pre">indictrans.base.BaseTransliterator</span></code> — BaseTransliterator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#indictrans-utils-wx-wxconverter"><code class="docutils literal"><span class="pre">indictrans._utils.WX</span></code> — WXConverter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#indictrans-utils-onehotencoder-onehotencoder"><code class="docutils literal"><span class="pre">indictrans._utils.OneHotEncoder</span></code> — OneHotEncoder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#indictrans-utils-urdunormalizer-urdunormalizer"><code class="docutils literal"><span class="pre">indictrans._utils.UrduNormalizer</span></code> — UrduNormalizer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#indictrans-trunk-structuredperceptron-structuredperceptron"><code class="docutils literal"><span class="pre">indictrans.trunk.StructuredPerceptron</span></code> — StructuredPerceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#indictrans-transliterator-transliterator"><code class="docutils literal"><span class="pre">indictrans.transliterator</span></code> — Transliterator</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indictrans-base-basetransliterator-basetransliterator"><code class="docutils literal"><span class="pre">indictrans.base.BaseTransliterator</span></code> — BaseTransliterator</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indictrans-utils-wx-wxconverter"><code class="docutils literal"><span class="pre">indictrans._utils.WX</span></code> — WXConverter</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indictrans-utils-onehotencoder-onehotencoder"><code class="docutils literal"><span class="pre">indictrans._utils.OneHotEncoder</span></code> — OneHotEncoder</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indictrans-utils-urdunormalizer-urdunormalizer"><code class="docutils literal"><span class="pre">indictrans._utils.UrduNormalizer</span></code> — UrduNormalizer</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#indictrans-trunk-structuredperceptron-structuredperceptron"><code class="docutils literal"><span class="pre">indictrans.trunk.StructuredPerceptron</span></code> — StructuredPerceptron</a><ul class="simple">
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -148,18 +159,33 @@
 <dt id="indictrans.Transliterator">
 <em class="property">class </em><code class="descclassname">indictrans.</code><code class="descname">Transliterator</code><span class="sig-paren">(</span><em>source='hin'</em>, <em>target='eng'</em>, <em>decode='viterbi'</em>, <em>build_lookup=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/transliterator.html#Transliterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.Transliterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transliterator for Indic scripts including English and Urdu.</p>
-<dl class="docutils">
-<dt>source</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str, default: hin</span><dd>Source Language (3 letter ISO-639 code)</dd>
-<dt>target</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str, default: eng</span><dd>Target Language (3 letter ISO-639 code)</dd>
-<dt>decode</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str, default: viterbi</span><dd>Decoding algorithm, either &#8220;viterbi&#8221; or &#8220;beamsearch&#8221;.</dd>
-<dt>build_lookup</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">bool, default: False</span><dd>Flag to build lookup-table. Fastens the transliteration
-process if the input text contains repeating words.</dd>
-</dl>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>source</strong> : str, default: hin</p>
+<blockquote>
+<div><p>Source Language (3 letter ISO-639 code)</p>
+</div></blockquote>
+<p><strong>target</strong> : str, default: eng</p>
+<blockquote>
+<div><p>Target Language (3 letter ISO-639 code)</p>
+</div></blockquote>
+<p><strong>decode</strong> : str, default: viterbi</p>
+<blockquote>
+<div><p>Decoding algorithm, either &#8220;viterbi&#8221; or &#8220;beamsearch&#8221;.</p>
+</div></blockquote>
+<p><strong>build_lookup</strong> : bool, default: False</p>
+<blockquote class="last">
+<div><p>Flag to build lookup-table. Fastens the transliteration
+process if the input text contains repeating words.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">indictrans</span> <span class="k">import</span> <span class="n">Transliterator</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trn</span> <span class="o">=</span> <span class="n">Transliterator</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;hin&#39;</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;eng&#39;</span><span class="p">,</span> <span class="n">build_lookup</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hin</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;कांग्रेस पार्टी अध्यक्ष सोनिया गांधी, तमिलनाडु की मुख्यमंत्री</span>
 <span class="gp">... </span><span class="s1">जयललिता और रिज़र्व बैंक के गवर्नर रघुराम राजन के बीच एक</span>
@@ -177,6 +203,18 @@ process if the input text contains repeating words.</dd>
 <span class="go">bhrashtachar hai.</span>
 </pre></div>
 </div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">convert</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -186,25 +224,69 @@ process if the input text contains repeating words.</dd>
 <dt id="indictrans.base.BaseTransliterator">
 <em class="property">class </em><code class="descclassname">indictrans.base.</code><code class="descname">BaseTransliterator</code><span class="sig-paren">(</span><em>source</em>, <em>target</em>, <em>decoder</em>, <em>build_lookup=False</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for transliterator.</p>
-<dl class="docutils">
-<dt><a href="#id1"><span class="problematic" id="id2">vectorizer_</span></a></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">instance</span><dd><cite>OneHotEncoder</cite> instance for converting categorical features to
-one-hot features.</dd>
-<dt><a href="#id3"><span class="problematic" id="id4">classes_</span></a></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">dict</span><dd>Dictionary of set of tags with unique ids ({id: tag}).</dd>
-<dt><a href="#id5"><span class="problematic" id="id6">coef_</span></a></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>HMM coefficient array</dd>
-<dt><a href="#id7"><span class="problematic" id="id8">intercept_init_</span></a></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>HMM intercept array for first layer of trellis.</dd>
-<dt><a href="#id9"><span class="problematic" id="id10">intercept_trans_</span></a></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>HMM intercept/transition array for middle layers of trellis.</dd>
-<dt><a href="#id11"><span class="problematic" id="id12">intercept_final_</span></a></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>HMM intercept array for last layer of trellis.</dd>
-<dt>wx_process</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">method</span><dd><cite>wx2utf</cite>/<cite>utf2wx</cite> method of <cite>WX</cite> instance</dd>
-<dt>nu</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">instance</span><dd><cite>UrduNormalizer</cite> instance for normalizing Urdu scripts.</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a href="#id1"><span class="problematic" id="id2">vectorizer_</span></a></td>
+<td>(instance) <cite>OneHotEncoder</cite> instance for converting categorical features to one-hot features.</td>
+</tr>
+<tr class="row-even"><td><a href="#id3"><span class="problematic" id="id4">classes_</span></a></td>
+<td>(dict) Dictionary of set of tags with unique ids ({id: tag}).</td>
+</tr>
+<tr class="row-odd"><td><a href="#id5"><span class="problematic" id="id6">coef_</span></a></td>
+<td>(array) HMM coefficient array</td>
+</tr>
+<tr class="row-even"><td><a href="#id7"><span class="problematic" id="id8">intercept_init_</span></a></td>
+<td>(array) HMM intercept array for first layer of trellis.</td>
+</tr>
+<tr class="row-odd"><td><a href="#id9"><span class="problematic" id="id10">intercept_trans_</span></a></td>
+<td>(array) HMM intercept/transition array for middle layers of trellis.</td>
+</tr>
+<tr class="row-even"><td><a href="#id11"><span class="problematic" id="id12">intercept_final_</span></a></td>
+<td>(array) HMM intercept array for last layer of trellis.</td>
+</tr>
+<tr class="row-odd"><td>wx_process</td>
+<td>(method) <cite>wx2utf</cite>/<cite>utf2wx</cite> method of <cite>WX</cite> instance</td>
+</tr>
+<tr class="row-even"><td>nu</td>
+<td>(instance) <cite>UrduNormalizer</cite> instance for normalizing Urdu scripts.</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">base_fit</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">convert_to_wx</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">load_mappings</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">load_models</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">top_n_trans</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">transliterate</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="indictrans.base.BaseTransliterator.convert_to_wx">
 <code class="descname">convert_to_wx</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.convert_to_wx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.convert_to_wx" title="Permalink to this definition">¶</a></dt>
@@ -228,10 +310,18 @@ sequence (target word)</p>
 <dt id="indictrans.base.BaseTransliterator.top_n_trans">
 <code class="descname">top_n_trans</code><span class="sig-paren">(</span><em>text</em>, <em>k_best=5</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/base.html#BaseTransliterator.top_n_trans"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.base.BaseTransliterator.top_n_trans" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns k-best transliterations using beamsearch decoding.</p>
-<dl class="docutils">
-<dt>k_best</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int, default: 5, optional</span><dd>Used by <cite>Beamsearch</cite> decoder to return k-best transliterations.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>k_best</strong> : int, default: 5, optional</p>
+<blockquote class="last">
+<div><p>Used by <cite>Beamsearch</cite> decoder to return k-best transliterations.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -249,13 +339,24 @@ sequence (target word)</p>
 <dt id="indictrans._utils.WX">
 <em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">WX</code><span class="sig-paren">(</span><em>order=u'utf2wx'</em>, <em>lang=u'hin'</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX" title="Permalink to this definition">¶</a></dt>
 <dd><p>WX-converter for UTF to WX conversion of Indic scripts and vice-versa.</p>
-<dl class="docutils">
-<dt>lang</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str, default: hin</span><dd>Input script</dd>
-<dt>order</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str, default: utf2wx</span><dd>Order of conversion</dd>
-</dl>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wx</span> <span class="k">import</span> <span class="n">WX</span>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lang</strong> : str, default: hin</p>
+<blockquote>
+<div><p>Input script</p>
+</div></blockquote>
+<p><strong>order</strong> : str, default: utf2wx</p>
+<blockquote class="last">
+<div><p>Order of conversion</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wx</span> <span class="k">import</span> <span class="n">WX</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wxc</span> <span class="o">=</span> <span class="n">WX</span><span class="p">(</span><span class="n">lang</span><span class="o">=</span><span class="s1">&#39;hin&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;utf2wx&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hin_utf</span> <span class="o">=</span> <span class="s1">u&#39;&#39;&#39;बीजेपी के सांसद सुब्रमण्यम स्वामी ने कुछ ही दिन पहले</span>
 <span class="gp">... </span><span class="s1">अपनी ही सरकार को कठघरे में खड़ा करते हुए जीडीपी आंकड़ों पर</span>
@@ -285,6 +386,150 @@ sequence (target word)</p>
 <span class="go">രീതിയിലാണ് ബി എസ് ഇയില് വ്യാപാരം നടക്കുന്നത്.</span>
 </pre></div>
 </div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">initialize_utf2wx_hash</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">initialize_wx2utf_hash</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_ben</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_guj</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_hin</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_kan</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_mal</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_ori</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_pan</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_tam</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2unicode_tel</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">iscii2wx</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_EY</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_EY2</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_OY</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_OY2</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_Z</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_ZeV</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_ZoV</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_a</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_eV</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_eV2</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_lY</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_lYY</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_nY</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_oV</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_oV2</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">map_q</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">map_rY</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">normalize</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_ben</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_guj</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_hin</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_kan</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_mal</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_ori</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_pan</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_tam</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">unicode2iscii_tel</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">utf2wx</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">wx2iscii</span></code></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">wx2utf</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="indictrans._utils.WX.iscii2unicode">
 <code class="descname">iscii2unicode</code><span class="sig-paren">(</span><em>iscii</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/wx.html#WX.iscii2unicode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.WX.iscii2unicode" title="Permalink to this definition">¶</a></dt>
@@ -338,7 +583,8 @@ sequence (target word)</p>
 <dt id="indictrans._utils.OneHotEncoder">
 <em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">OneHotEncoder</code><a class="reference internal" href="modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transforms categorical features to continuous numeric features.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">one_hot_encoder</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">one_hot_encoder</span> <span class="k">import</span> <span class="n">OneHotEncoder</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sequences</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bat&#39;</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;rat&#39;</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">enc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span>
@@ -354,31 +600,68 @@ sequence (target word)</p>
 <span class="go">    with 3 stored elements in Compressed Sparse Row format&gt;</span>
 </pre></div>
 </div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">transform</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="indictrans._utils.OneHotEncoder.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit OneHotEncoder to X.</p>
-<dl class="docutils">
-<dt>X</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape [n_samples, n_feature]</span><dd>Input array of type int.</dd>
-</dl>
-<p>self</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape [n_samples, n_feature]</p>
+<blockquote>
+<div><p>Input array of type int.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans._utils.OneHotEncoder.transform">
 <code class="descname">transform</code><span class="sig-paren">(</span><em>X</em>, <em>sparse=True</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/one_hot_encoder.html#OneHotEncoder.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.OneHotEncoder.transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transform X using one-hot encoding.</p>
-<dl class="docutils">
-<dt>X</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array-like, shape [n_samples, n_features]</span><dd>Input array of categorical features.</dd>
-<dt>sparse</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">bool, default: True</span><dd>Return sparse matrix if set True else return an array.</dd>
-</dl>
-<dl class="docutils">
-<dt>X_out</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">sparse matrix if sparse=True else a 2-d array, dtype=int</span><dd>Transformed input.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape [n_samples, n_features]</p>
+<blockquote>
+<div><p>Input array of categorical features.</p>
+</div></blockquote>
+<p><strong>sparse</strong> : bool, default: True</p>
+<blockquote>
+<div><p>Return sparse matrix if set True else return an array.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_out</strong> : sparse matrix if sparse=True else a 2-d array, dtype=int</p>
+<blockquote class="last">
+<div><p>Transformed input.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -391,7 +674,8 @@ sequence (target word)</p>
 <em class="property">class </em><code class="descclassname">indictrans._utils.</code><code class="descname">UrduNormalizer</code><a class="reference internal" href="modules/indictrans/_utils/script_normalizer.html#UrduNormalizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Normalizer for Urdu scripts. Normalizes different unicode canonical
 equivalances to a single unicode code-point.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">script_normalizer</span> <span class="k">import</span> <span class="n">UrduNormalizer</span>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">script_normalizer</span> <span class="k">import</span> <span class="n">UrduNormalizer</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s1">u&#39;&#39;&#39;ﺎﻧ کﻭ ﻍیﺮﻗﺎﻧﻮﻧی ﺝگہ کﺱ ﻥے ﺩی؟</span>
 <span class="gp">... </span><span class="s1">ﻝﻭگﻭں کﻭ ﻖﺘﻟ کیﺍ ﺝﺍﺭ ہﺍ ہے ۔</span>
 <span class="gp">... </span><span class="s1">ﺏڑے ﻡﺎﻣﻭں ﺎﻧ ﺪﻧﻭں ﻢﺤﻟہ ﺥﺩﺍﺩﺍﺩ ﻡیں ﺭہﺕے ﺕھے۔</span>
@@ -404,6 +688,21 @@ equivalances to a single unicode code-point.</p>
 <span class="go">عوامی یا فلاحی خدمات ایک الگ دائرہ عمل ہے۔</span>
 </pre></div>
 </div>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">cnorm</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">normalize</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="indictrans._utils.UrduNormalizer.cnorm">
 <code class="descname">cnorm</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/_utils/script_normalizer.html#UrduNormalizer.cnorm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans._utils.UrduNormalizer.cnorm" title="Permalink to this definition">¶</a></dt>
@@ -429,56 +728,108 @@ MARK[LEFT_TO_RIGHT, RIGHT_TO_LEFT, BYTE_ORDER, BYTE_ORDER_2]</p>
 <dd><p>Structured perceptron for sequence classification.</p>
 <p>The implemention is based on average structured perceptron algorithm of
 M. Collins.</p>
-<dl class="docutils">
-<dt>lr_exp</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">float, default: 0.1</span><dd>The Exponent used for inverse scaling of learning rate. Given iteration
-number t, the effective learning rate is <code class="docutils literal"><span class="pre">1.</span> <span class="pre">/</span> <span class="pre">(t</span> <span class="pre">**</span> <span class="pre">lr_exp)</span></code></dd>
-<dt>n_iter</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int, default: 15</span><dd>Maximum number of epochs of the structured perceptron algorithm</dd>
-<dt>random_state</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int, RandomState instance or None, optional (default=None)</span><dd>If int, random_state is the seed used by the random number generator;
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lr_exp</strong> : float, default: 0.1</p>
+<blockquote>
+<div><p>The Exponent used for inverse scaling of learning rate. Given iteration
+number t, the effective learning rate is <code class="docutils literal"><span class="pre">1.</span> <span class="pre">/</span> <span class="pre">(t</span> <span class="pre">**</span> <span class="pre">lr_exp)</span></code></p>
+</div></blockquote>
+<p><strong>n_iter</strong> : int, default: 15</p>
+<blockquote>
+<div><p>Maximum number of epochs of the structured perceptron algorithm</p>
+</div></blockquote>
+<p><strong>random_state</strong> : int, RandomState instance or None, optional (default=None)</p>
+<blockquote>
+<div><p>If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
-by <code class="docutils literal"><span class="pre">np.random</span></code>.</dd>
-<dt>verbose</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int, default: 0 (quiet mode)</span><dd>Verbosity mode.</dd>
-</dl>
+by <code class="docutils literal"><span class="pre">np.random</span></code>.</p>
+</div></blockquote>
+<p><strong>verbose</strong> : int, default: 0 (quiet mode)</p>
+<blockquote class="last">
+<div><p>Verbosity mode.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
 <p>M. Collins (2002). Discriminative training methods for hidden Markov
 models: Theory and experiments with perceptron algorithms. EMNLP.</p>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal"><span class="pre">fit</span></code></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal"><span class="pre">predict</span></code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="indictrans.trunk.StructuredPerceptron.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/trunk/perceptron.html#StructuredPerceptron.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit the model to the given set of sequences.</p>
-<dl class="docutils">
-<dt>X</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{array-like, sparse matrix}, shape (n_sequences, sequence_length,</span><dd><blockquote class="first">
-<div>n_features)</div></blockquote>
-<p class="last">Feature matrix of train sequences.</p>
-</dd>
-<dt>y</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">list of arrays, shape (n_sequences, sequence_length)</span><dd>Target labels.</dd>
-</dl>
-<dl class="docutils">
-<dt>self</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">object</span><dd>Returns self.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape (n_sequences, sequence_length,</p>
+<blockquote>
+<div><blockquote>
+<div><p>n_features)</p>
+</div></blockquote>
+<p>Feature matrix of train sequences.</p>
+</div></blockquote>
+<p><strong>y</strong> : list of arrays, shape (n_sequences, sequence_length)</p>
+<blockquote>
+<div><p>Target labels.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
+<blockquote class="last">
+<div><p>Returns self.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="indictrans.trunk.StructuredPerceptron.predict">
 <code class="descname">predict</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="modules/indictrans/trunk/perceptron.html#StructuredPerceptron.predict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#indictrans.trunk.StructuredPerceptron.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict output sequences for input sequences in X.</p>
-<dl class="docutils">
-<dt>X</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">{array-like, sparse matrix}, shape (n_sequences, sequence_length,</span><dd><blockquote class="first">
-<div>n_features)</div></blockquote>
-<p class="last">Feature matrix of test sequences.</p>
-</dd>
-</dl>
-<dl class="docutils">
-<dt>y</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array, shape (n_sequences, sequence_length)</span><dd>Labels per sequence in X.</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : {array-like, sparse matrix}, shape (n_sequences, sequence_length,</p>
+<blockquote>
+<div><blockquote>
+<div><p>n_features)</p>
+</div></blockquote>
+<p>Feature matrix of test sequences.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array, shape (n_sequences, sequence_length)</p>
+<blockquote class="last">
+<div><p>Labels per sequence in X.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -492,8 +843,6 @@ models: Theory and experiments with perceptron algorithms. EMNLP.</p>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="guide_installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Welcome to indictrans’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -527,7 +876,7 @@ models: Theory and experiments with perceptron algorithms. EMNLP.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'latest',
+            VERSION:'1.0.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
