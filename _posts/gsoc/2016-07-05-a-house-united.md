@@ -75,7 +75,7 @@ Hindi and Urdu are spoken primarily in northern India and Pakistan and together 
 
 ### Training and Testing
 
-For data extraction and learning the model papameters, I followed the same pipeline as described in the [Roman-Indic Transliteration](/rom-ind/) post. I extracted a total of _54,035_ translation pairs from the ILCI parallel corpus and _66,668_ pairs from Indo-wordnet synset mappings. The transliteration accuracy Hindi to Urdu system is _98.03%_ for a test-set of 10,000 words, where as the transliteration accuracy of Urdu to Hindi system is _88.03%_ for the same test-set.
+For data extraction and learning the model parameters, I followed the same pipeline as described in the [Roman-Indic Transliteration](/rom-ind/) post. I extracted a total of _54,035_ translation pairs from the ILCI parallel corpus and _66,668_ pairs from Indo-wordnet synset mappings. The transliteration accuracy Hindi to Urdu system is _98.03%_ for a test-set of 10,000 words, where as the transliteration accuracy of Urdu to Hindi system is _88.03%_ for the same test-set.
 
 ```python
 from indictrans import transliterator
