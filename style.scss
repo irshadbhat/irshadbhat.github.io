@@ -192,8 +192,8 @@ td{
 
 .site-avatar {
   float: left;
-  width: 70px;
-  height: 70px;
+  width: 140px;
+  height: 140px;
   margin-right: 15px;
 
   @include mobile {
@@ -203,7 +203,7 @@ td{
   }
 
   img {
-    border-radius: 5px;
+    border-radius: 10px;
   }
 }
 

@@ -6,10 +6,12 @@
 name: Irshad Ahmad Bhat
 
 # Short bio or description (displayed in the header)
-description: Research Scientist at Active Intelligence LLP, Banguluru 
+description: 
+  Research Scientist at
+  Active Intelligence LLP, Banguluru 
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: https://avatars2.githubusercontent.com/u/9250250?s=400&u=35cfdba462ae5f3b19612a71643d273a39141089&v=4
+avatar: image-irshad.jpg #https://avatars2.githubusercontent.com/u/9250250?s=400&u=35cfdba462ae5f3b19612a71643d273a39141089&v=4
 #avatar: images/indian-languages.png
 
 #
@@ -26,10 +28,11 @@ footer-links:
   instagram:
   linkedin: irshad-ahmad-bhat-32552958
   pinterest:
-  rss: # just type anything here for a working RSS icon
+  rss: 
   stackoverflow: users/4154185/irshad-bhat
   youtube: # channel/<your_long_string> or user/<user-name>
-  googleplus: # anything in your profile username that comes after plus.google.com/
+  googleplus: # https://scholar.google.co.in/citations?user=PRvWQRoAAAAJ&hl=en 
+  
 
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
@@ -85,3 +88,4 @@ exclude:
   - README.md
   - CNAME
 permalink: /blog/:year/:month/:day/:title
+
