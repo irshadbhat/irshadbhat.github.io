@@ -10,7 +10,7 @@ Structured perceptron based transliteration system for cross transliterations am
 ### [Language Identification and Normalization in Code Switching](https://github.com/irshadbhat/csnli) 
 Language identification and normalisation in code switching data tailored with a three-step decoding process.
 
-### [Dependency Parser for Code Switching](https://github.com/irshadbhat/csnlp)
+### [Dependency Parser for Code Switching Texts](https://github.com/irshadbhat/csnlp)
 Neural Stacking Dependency Parsers for monolingual, multilingual and code switching texts.
 
 ### [Wx converter](https://github.com/irshadbhat/indic-wx-converter)
