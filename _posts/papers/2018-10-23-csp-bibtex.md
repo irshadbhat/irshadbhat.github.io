@@ -1,6 +1,9 @@
 ---
+layout: 
+title: 
 permalink: /csp-bibtex/
 category: subpost
+date: 2018-10-23
 
 ---
 
