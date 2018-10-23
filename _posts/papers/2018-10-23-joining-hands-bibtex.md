@@ -1,5 +1,9 @@
 ---
+layout: 
+title: 
+permalink: /joining-hands-bibtex/
 category: subpost
+date: 2018-10-23
 
 ---
 
