@@ -1,4 +1,5 @@
 ---
+permalink: /csp-bibtex/
 category: subpost
 
 ---
