@@ -2,7 +2,7 @@
 layout: post
 title: Hindi-Urdu Transliteration 
 permalink: /house-united/
-category: gsoc
+category: subpost
 date: 2016-07-05
 tags:
 - libindic

@@ -1,12 +1,16 @@
 ---
-layout: page
+layout: post
 title: Papers
 parmalink: /papers/
 ---
 
 ### [Universal Dependency Parsing for Hindi-English Code-switching](http://www.aclweb.org/anthology/N18-1090)
+
 In Proceedings of the 16th Annual Conference of the North American Chapter of the Association for Computational Linguistics (NAACL) 2018, New Orleans, Louisiana.
 
+[Abstract]({% post_url papers/2018-10-23-udp %})
+
+---
 
 ### [The SLT-Interactions Parsing System at the CoNLL 2018 Shared Task](http://universaldependencies.org/conll18/proceedings/pdf/K18-2015.pdf).
 In Proceedings of the CoNLL 2018 Shared Task: Multilingual Parsing from Raw Text to Universal Dependencies.
