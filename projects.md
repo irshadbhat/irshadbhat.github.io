@@ -7,6 +7,9 @@ parmalink: /projects/
 ### [Machine Transliteration](https://github.com/irshadbhat/indic-trans)
 Structured perceptron based transliteration system for cross transliterations among 16 Indian languages including English and Urdu.
 
+### [Hindi-English UD Treebank](https://github.com/CodeMixedUniversalDependencies/UD_Hindi_English)
+Universal Dependency Treebank for Hindi-English Code Switching.
+
 ### [Language Identification and Normalization in Code Switching](https://github.com/irshadbhat/csnli) 
 Language identification and normalisation in code switching data tailored with a three-step decoding process.
 
